@@ -7,15 +7,15 @@ import PageContent from "../src/components/PageContent";
 import { appImages } from "../src/config/data";
 
 // Component
-function Blog() {
+function PasswordRecovery() {
   // Debug
-  //console.log("Debug blog: ",)
+  //console.log("Debug passwordRecovery: ",)
 
   // Return component
   return (
-    <PageContent title="Blog">
+    <PageContent title="Password Recovery">
       {/** SECTION - PAGE DETAILS */}
-      <section id="blog" className="bg-white">
+      <section id="passwordRecovery" className="bg-white">
         {/** CONTAINER */}
         <div className="container flex mx-auto px-4 py-24 md:flex-row md:space-y-0">
           {/** COL 1 */}
@@ -34,4 +34,4 @@ function Blog() {
 } // close component
 
 // Export
-export default Blog;
+export default PasswordRecovery;

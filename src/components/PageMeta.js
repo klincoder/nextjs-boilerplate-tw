@@ -16,15 +16,15 @@ function PageMeta({ isNormal, title, description, keywords, screenshot }) {
   const { siteInfo } = useAppSettings();
 
   // Debug
-  // console.log("Debug pageMeta: ", router.pathname);
+  //console.log("Debug pageMeta: ", siteInfo);
 
   // Return component
   return (
     <Head>
       {/** Page title */}
-      <title>{`${title} ${
-        router.pathname !== "/" ? ` - ${siteInfo?.siteName}` : ""
-      }`}</title>
+      <title>
+        {`${title} ${router.pathname === "/" ? "" : ` - ${siteInfo?.name}`}`}
+      </title>
 
       {/** Favicon */}
       <link rel="icon" href="/favicon.ico" />

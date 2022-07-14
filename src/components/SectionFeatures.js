@@ -14,7 +14,7 @@ function SectionFeatures() {
   return (
     <section id="features" className="bg-veryLightGray">
       {/** CONTAINER */}
-      <div className="container flex flex-col px-4 mx-auto py-24 space-y-8 md:space-y-0 md:flex-row">
+      <div className="container flex flex-col mx-auto px-4 py-24 space-y-8 md:flex-row md:space-y-0">
         {/** COL 1 */}
         <div className="flex flex-col space-y-12 self-center md:w-1/2">
           {/** Title */}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { appImages, navLinks } from "../config/data";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 // Import custom files
 import tw from "../styles/twStyles";
@@ -14,8 +15,11 @@ function PageHeader() {
   // Define state
   const [toggleMenu, setToggleMenu] = useState(false);
 
+  // Define router
+  const router = useRouter();
+
   // Debug
-  //console.log("Debug pageHeader: ",)
+  //console.log("Debug pageHeader: ", router.pathname);
 
   // FUNCTIONS
   // HANDLE TOGGLE MENU
@@ -30,13 +34,15 @@ function PageHeader() {
       <div className="flex items-center justify-between">
         {/** Logo */}
         <div className="pt-2 cursor-pointer">
-          <CustomButton isLink>
-            <CustomImage
-              image={appImages?.logo}
-              alt="logo"
-              // width={146}
-              // height={24}
-            />
+          <CustomButton isLink href="/" passHref>
+            <a>
+              <CustomImage
+                image={appImages?.logo}
+                alt="logo"
+                // width={146}
+                // height={24}
+              />
+            </a>
           </CustomButton>
         </div>
 
@@ -46,7 +52,13 @@ function PageHeader() {
           {navLinks?.length > 0 &&
             navLinks?.map((item) => (
               <CustomButton isLink key={item?.id} href={item?.link}>
-                <a className="hover:text-darkGrayishBlue">{item?.title}</a>
+                <a
+                  className={` hover:text-brightRed ${
+                    router.pathname === item?.link ? "text-brightRed" : ""
+                  }`}
+                >
+                  {item?.title}
+                </a>
               </CustomButton>
             ))}
         </div>

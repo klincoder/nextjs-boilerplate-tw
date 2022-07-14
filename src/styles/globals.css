@@ -25,6 +25,11 @@ body {
   transform: translateY(0px);
 }
 
+.footer-container {
+  position: sticky;
+  top: 100%;
+}
+
 /** MEDIA QUERIES */
 @media (max-width: 576px) {
   body {

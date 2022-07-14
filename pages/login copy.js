@@ -5,22 +5,29 @@ import React from "react";
 import tw from "../src/styles/twStyles";
 import PageContent from "../src/components/PageContent";
 import { appImages } from "../src/config/data";
+import CustomTextInput from "../src/components/CustomTextInput";
 
 // Component
-function Blog() {
+function Login() {
   // Debug
-  //console.log("Debug blog: ",)
+  //console.log("Debug login: ",)
 
   // Return component
   return (
-    <PageContent title="Blog">
+    <PageContent title="Login">
       {/** SECTION - PAGE DETAILS */}
-      <section id="blog" className="bg-white">
+      <section id="login" className="bg-white">
         {/** CONTAINER */}
         <div className="container flex mx-auto px-4 py-24 md:flex-row md:space-y-0">
           {/** COL 1 */}
           <div className="flex flex-col mb-32 space-y-8 md:w-1/2">
-            <p>Col 1</p>
+            {/** TEST */}
+            <CustomTextInput
+              label="Full name"
+              name="fullName"
+              //errName="Invalid name"
+              //errTouched="true"
+            />
           </div>
 
           {/** COL 2 */}
@@ -34,4 +41,4 @@ function Blog() {
 } // close component
 
 // Export
-export default Blog;
+export default Login;

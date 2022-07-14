@@ -13,7 +13,7 @@ function PageContent({ title, description, keywords, screenshot, children }) {
 
   // Return component
   return (
-    <div>
+    <div className="min-h-screen">
       {/** Page meta */}
       <PageMeta
         isNormal
@@ -30,7 +30,9 @@ function PageContent({ title, description, keywords, screenshot, children }) {
       <>{children}</>
 
       {/** Footer */}
-      <PageFooter />
+      <div className="sticky top-full">
+        <PageFooter />
+      </div>
     </div>
   ); // close return
 } // close component

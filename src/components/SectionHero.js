@@ -16,15 +16,15 @@ function SectionHero() {
   return (
     <section id="hero">
       {/** CONTAINER */}
-      <div className={`${tw?.sectionContainer} flex-col-reverse`}>
+      <div className="container flex flex-col-reverse mx-auto px-6 items-center mt-10 space-y-0 md:flex-row md:space-y-0">
         {/** COL 1 */}
-        <div className={tw?.sectionCol}>
+        <div className="flex flex-col mb-32 space-y-8 md:w-1/2">
           {/** Title */}
-          <h1 className={`${tw?.sectionHeading} md:text-5xl`}>
+          <h1 className="max-w-md text-4xl font-bold text-center md:text-left md:text-5xl">
             Bring everyone together to build better products.
           </h1>
           {/** Sub title */}
-          <p className={tw?.sectionPara}>
+          <p className="max-w-sm text-center text-darkGrayishBlue md:text-left">
             Manage makes it simple for software teams to plan day-to-day tasks
             while keeping larger teeam goals in view.
           </p>
