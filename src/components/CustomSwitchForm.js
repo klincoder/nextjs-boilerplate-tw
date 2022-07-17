@@ -4,20 +4,21 @@ import { useFormikContext } from "formik";
 
 // Import custom files
 import tw from "../styles/twStyles";
-import CustomCheckbox from "./CustomCheckbox";
+import CustomHelperMsg from "./CustomHelperMsg";
+import CustomSwitch from "./CustomSwitch";
 
 // Component
-function CustomCheckboxForm({ name, data, ...rest }) {
+function CustomSwitchForm({ name, data, ...rest }) {
   // Define formik context
   const { values, errors, touched, setFieldTouched, handleChange } =
     useFormikContext();
 
   // Debug
-  //console.log("Debug customCheckboxForm: ", name);
+  //console.log("Debug customSwitchForm: ",)
 
   // Return component
   return (
-    <CustomCheckbox
+    <CustomSwitch
       {...rest}
       data={data}
       name={name}
@@ -32,4 +33,4 @@ function CustomCheckboxForm({ name, data, ...rest }) {
 } // close component
 
 // Export
-export default CustomCheckboxForm;
+export default CustomSwitchForm;

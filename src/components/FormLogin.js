@@ -12,12 +12,9 @@ import CustomButton from "./CustomButton";
 import useAppSettings from "../hooks/useAppSettings";
 import CustomTextInputForm from "./CustomTextInputForm";
 import CustomPasswordForm from "./CustomPasswordForm";
+import CustomSpinner from "./CustomSpinner";
 import { alertMsg, apiRoutes } from "../config/data";
 import { handleGenEmptyArr, handleUserEmail } from "../config/functions";
-import CustomSpinner from "./CustomSpinner";
-import CustomSelectForm from "./CustomSelectForm";
-import CustomTextareaForm from "./CustomTextareaForm";
-import CustomCheckboxForm from "./CustomCheckboxForm";
 
 // Component
 function FormLogin({ csrfToken }) {
@@ -36,10 +33,9 @@ function FormLogin({ csrfToken }) {
     useAppSettings();
 
   // TEST DATA
-  // CHECKBOX DATA
   const checkboxData = ["Email", "SMS"];
-  const checkboxDataLen = checkboxData?.length;
-  const checkboxInitialVal = handleGenEmptyArr(checkboxDataLen);
+  const genderData = ["Male", "Female"];
+  const switchData = ["Manage Users", "Manage Pages"];
 
   // Debug
   //console.log("Debug formLogin: ", checkboxInitialVal);
@@ -52,6 +48,8 @@ function FormLogin({ csrfToken }) {
     select: "",
     textarea: "",
     checkbox: "",
+    radio: "",
+    switch: "",
   };
 
   // Validation
@@ -61,6 +59,8 @@ function FormLogin({ csrfToken }) {
     select: Yup.string().required("Required"),
     textarea: Yup.string().required("Required"),
     checkbox: Yup.array().min(1, "Select one or more"),
+    radio: Yup.string().required("Required"),
+    switch: Yup.array().min(1, "Select one or more"),
   });
 
   // Define submit function
@@ -140,7 +140,7 @@ function FormLogin({ csrfToken }) {
       {({ values, errors, isValid, isSubmitting }) => (
         <Form autoComplete="off">
           {/** Debug */}
-          {/* {console.log("Debug loginFormValues:", values.checkbox)} */}
+          {/* {console.log("Debug loginFormValues:", values.switch, errors.switch)} */}
 
           {/** Hidden csrfToken field */}
           <input type="hidden" name="csrfToken" defaultValue={csrfToken} />
@@ -154,23 +154,6 @@ function FormLogin({ csrfToken }) {
             name="pass"
             showPass={showPass}
             onClickShowPass={() => setShowPass(!showPass)}
-          />
-
-          {/** SELECT */}
-          <CustomSelectForm
-            label="Courses"
-            name="select"
-            data={["React", "React Native"]}
-          />
-
-          {/** TEXTAREA */}
-          <CustomTextareaForm label="Message" name="textarea" />
-
-          {/** CHECKBOX */}
-          <CustomCheckboxForm
-            label="Features"
-            name="checkbox"
-            data={checkboxData}
           />
 
           {/** Button */}

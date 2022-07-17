@@ -4,32 +4,31 @@ import { useFormikContext } from "formik";
 
 // Import custom files
 import tw from "../styles/twStyles";
-import CustomCheckbox from "./CustomCheckbox";
+import CustomTextInput from "./CustomTextInput";
 
 // Component
-function CustomCheckboxForm({ name, data, ...rest }) {
+function CustomOtpInputForm({ name, type, ...rest }) {
   // Define formik context
-  const { values, errors, touched, setFieldTouched, handleChange } =
+  const { values, errors, touched, setFieldValue, setFieldTouched } =
     useFormikContext();
 
   // Debug
-  //console.log("Debug customCheckboxForm: ", name);
+  //console.log("Debug customOtpInputForm: ", touched);
 
   // Return component
   return (
-    <CustomCheckbox
+    <CustomTextInput
       {...rest}
-      data={data}
-      name={name}
+      type={type}
       value={values[name]}
       errName={errors[name]}
       errTouched={touched[name]}
       onBlur={() => setFieldTouched(name)}
-      onChange={handleChange(name)}
+      onChange={(e) => setFieldValue(name, e.target.value)}
       inputClass={touched[name] && errors[name] && "border-danger"}
     />
   ); // close return
 } // close component
 
 // Export
-export default CustomCheckboxForm;
+export default CustomOtpInputForm;

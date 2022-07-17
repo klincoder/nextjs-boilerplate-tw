@@ -4,20 +4,26 @@ import { useFormikContext } from "formik";
 
 // Import custom files
 import tw from "../styles/twStyles";
-import CustomCheckbox from "./CustomCheckbox";
+import CustomRadio from "./CustomRadio";
 
 // Component
-function CustomCheckboxForm({ name, data, ...rest }) {
+function CustomRadioForm({ name, data, ...rest }) {
   // Define formik context
-  const { values, errors, touched, setFieldTouched, handleChange } =
-    useFormikContext();
+  const {
+    values,
+    errors,
+    touched,
+    setFieldTouched,
+    setFieldValue,
+    handleChange,
+  } = useFormikContext();
 
   // Debug
-  //console.log("Debug customCheckboxForm: ", name);
+  //console.log("Debug customRadioForm: ", name, values[name]);
 
   // Return component
   return (
-    <CustomCheckbox
+    <CustomRadio
       {...rest}
       data={data}
       name={name}
@@ -25,11 +31,11 @@ function CustomCheckboxForm({ name, data, ...rest }) {
       errName={errors[name]}
       errTouched={touched[name]}
       onBlur={() => setFieldTouched(name)}
-      onChange={handleChange(name)}
+      onChange={(e) => setFieldValue(name, e.target.value)}
       inputClass={touched[name] && errors[name] && "border-danger"}
     />
   ); // close return
 } // close component
 
 // Export
-export default CustomCheckboxForm;
+export default CustomRadioForm;

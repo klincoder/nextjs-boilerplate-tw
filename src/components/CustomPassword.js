@@ -25,7 +25,7 @@ function CustomPassword({
 
   // Return component
   return (
-    <div className={`mb-3 ${divClass}`}>
+    <div className={`mb-4 ${divClass}`}>
       {/** Label */}
       {label && (
         <label

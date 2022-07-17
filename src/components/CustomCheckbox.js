@@ -10,7 +10,6 @@ function CustomCheckbox({
   label,
   name,
   data,
-  isRow,
   divClass,
   inputClass,
   helperMsg,
@@ -24,7 +23,7 @@ function CustomCheckbox({
 
   // Return component
   return (
-    <div className={`mb-4 ${isRow && "flex"} ${divClass}`}>
+    <div className={`mb-4 ${divClass}`}>
       {/** Label */}
       {label && (
         <label htmlFor={name} className="block text-sm font-semibold mb-1 mr-3">
@@ -56,7 +55,7 @@ function CustomCheckbox({
             {/** Debug */}
             {/* {console.log(
               "Debug checkboxGetIndex: ",
-              `${name}[${index}] - ${item}`
+              `${name}[${index}]`
             )} */}
           </div>
         ))}

@@ -10,7 +10,6 @@ function CustomRadio({
   label,
   name,
   data,
-  isRow,
   divClass,
   inputClass,
   helperMsg,
@@ -24,7 +23,7 @@ function CustomRadio({
 
   // Return component
   return (
-    <div className={`mb-4 ${isRow && "flex"} ${divClass}`}>
+    <div className={`mb-4 ${divClass}`}>
       {/** Label */}
       {label && (
         <label htmlFor={name} className="block text-sm font-semibold mb-1 mr-3">
@@ -39,10 +38,12 @@ function CustomRadio({
           <div key={item + index} className="form-check form-check-inline">
             {/** Input */}
             <input
+              {...rest}
               type="radio"
               id={item}
               name={name}
-              className={`form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-secondary checked:border-secondary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer ${inputClass}`}
+              value={item}
+              className={`form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-primary checked:border-primary checked:disabled:bg-lightPrimary disabled:bg-gray-400 disabled:pointer-events-none disabled:opacity-60 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer ${inputClass}`}
             />
             {/** Label */}
             <label

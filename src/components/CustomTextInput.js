@@ -23,7 +23,7 @@ function CustomTextInput({
 
   // Return component
   return (
-    <div className={`mb-3 xl:w-96 ${divClass}`}>
+    <div className={`mb-4 xl:w-96 ${divClass}`}>
       {/** Label */}
       {label && (
         <label

@@ -10,7 +10,6 @@ function CustomSwitch({
   label,
   name,
   data,
-  isRow,
   divClass,
   inputClass,
   helperMsg,
@@ -24,10 +23,10 @@ function CustomSwitch({
 
   // Return component
   return (
-    <div className={`mb-4 ${isRow && "flex"} ${divClass}`}>
+    <div className={`mb-3 ${divClass}`}>
       {/** Label */}
       {label && (
-        <label htmlFor={name} className="block text-sm font-semibold mb-1 mr-3">
+        <label htmlFor={name} className="block text-sm font-semibold mb-1">
           {label}
         </label>
       )}
@@ -38,15 +37,16 @@ function CustomSwitch({
         data?.map((item, index) => (
           <div
             key={item}
-            className="form-check form-check-inline form-switch mb-2 mr-5"
+            className="form-check form-check-inline form-switch mb-1"
           >
             {/** Input */}
             <input
               {...rest}
               id={item}
-              value={item}
               role="switch"
               type="checkbox"
+              value={item}
+              name={`${name}[${index}]`}
               className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top cursor-pointer shadow-sm bg-gray-400 bg-no-repeat bg-contain checked:bg-primary checked:border-primary checked:disabled:bg-lightPrimary disabled:bg-gray-400 disabled:pointer-events-none disabled:opacity-60 focus:outline-none ${inputClass}`}
             ></input>
             {/** Label */}

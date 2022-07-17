@@ -1,10 +1,12 @@
 // Import resources
 import React from "react";
+import { getSession } from "next-auth/react";
 
 // Import custom files
 import tw from "../src/styles/twStyles";
-import PageContent from "../src/components/PageContent";
 import { appImages } from "../src/config/data";
+import PageContent from "../src/components/PageContent";
+import CustomCard from "../src/components/CustomCard";
 
 // Component
 function Register() {
@@ -17,16 +19,12 @@ function Register() {
       {/** SECTION - PAGE DETAILS */}
       <section id="register" className="bg-white">
         {/** CONTAINER */}
-        <div className="container flex mx-auto px-4 py-24 md:flex-row md:space-y-0">
-          {/** COL 1 */}
-          <div className="flex flex-col mb-32 space-y-8 md:w-1/2">
-            <p>Col 1</p>
-          </div>
-
-          {/** COL 2 */}
-          <div className="flex flex-col mb-32 space-y-8 md:w-1/2">
-            <p>Col 2</p>
-          </div>
+        <div className="container mx-auto flex items-center justify-center px-4 py-14 w-full md:space-y-0">
+          {/** Card */}
+          <CustomCard>
+            {/** Form */}
+            {/* <FormLogin csrfToken={csrfToken} /> */}
+          </CustomCard>
         </div>
       </section>
     </PageContent>
@@ -35,3 +33,25 @@ function Register() {
 
 // Export
 export default Register;
+
+// GET SERVERSIDE PROPS
+export async function getServerSideProps(context) {
+  // Get current session
+  const session = await getSession(context);
+  // If session, redirect
+  if (session) {
+    return {
+      redirect: {
+        destination: `/`,
+        permanent: false,
+      }, // close redirect
+    }; // close return
+  } // close if session
+
+  // If no session, return props
+  return {
+    props: {
+      currSession: session ? session?.user : null,
+    }, // close props
+  }; // close return
+} // close getServerSide
