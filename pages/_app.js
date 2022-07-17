@@ -10,6 +10,7 @@ import { RecoilRoot } from "recoil";
 import "../src/styles/globals.css";
 import GetDatabaseContent from "../src/components/GetDatabaseContent";
 import { appColors } from "../src/config/data";
+import Script from "next/script";
 
 // Define alert provider options
 const alertProviderOpt = {
@@ -40,6 +41,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         stopDelayMs={200}
         height={3}
         showOnShallow={true}
+        options={{ showSpinner: false }}
       />
 
       {/** APP BODY */}
@@ -57,6 +59,14 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           </SessionProvider>
         </AlertProvider>
       </RecoilRoot>
+
+      {/** CUSTOM JS SCRIPTS */}
+      {/** TW ELEMENTS */}
+      <Script
+        async
+        strategy="afterInteractive"
+        src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"
+      />
     </>
   ); // close return
 } // close component

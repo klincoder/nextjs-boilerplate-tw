@@ -1,16 +1,10 @@
 // TW STYLES
 const tw = {
   btnPrimary:
-    "p-3 px-6 pt-2 bg-brightRed text-white rounded-full self-baseline font-semibold hover:bg-brightRedLight",
+    "inline-block px-6 py-3 bg-primary rounded-full text-white text-sm font-semibold leading-tight uppercase shadow-md hover:bg-lightPrimary hover:shadow-lg focus:bg-lightPrimary focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary active:shadow-lg disabled:opacity-60 disabled:pointer-events-none transition duration-150 ease-in-out",
   btnSecondary:
-    "p-3 px-6 pt-2 bg-white text-brightRed rounded-full self-baseline font-semibold hover:bg-lightGray",
-  btnSubscribe:
-    "px-6 py-2 text-white rounded-full bg-brightRed hover:bg-brightRedLight focus:outline-none",
-
-  // sectionContainer: "container flex mx-auto px-4 md:flex-row md:space-y-0",
-  // sectionCol: "flex flex-col mb-32 space-y-8 md:w-1/2",
-  // sectionHeading: "max-w-md text-4xl font-bold text-center md:text-left",
-  // sectionPara: "max-w-sm text-center text-darkGrayishBlue md:text-left",
+    "inline-block px-6 py-3 bg-white rounded-full text-primary text-sm font-semibold leading-tight uppercase shadow-md hover:bg-gray-100 hover:shadow-lg focus:bg-gray-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-100 active:shadow-lg disabled:opacity-60 disabled:pointer-events-none transition duration-150 ease-in-out",
+  //"px-6 py-3 bg-white text-primary rounded-full self-baseline font-semibold hover:bg-gray-100",
 };
 
 // Export

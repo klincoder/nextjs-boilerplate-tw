@@ -93,6 +93,8 @@ export const apiRoutes = {
 // ALERT MSG
 export const alertMsg = {
   general: "Internal error. Please contact support.",
+  loginSucc: "Login successful",
+  loginErr: "Invalid credentials",
 };
 
 // NAV LINKS
@@ -167,6 +169,6 @@ export const companyLinks = [
   { id: "1011", title: "Blog", link: "/blog" },
   { id: "1213", title: "FAQs", link: "/faqs" },
   { id: "1415", title: "Contact", link: "/contact" },
-  { id: "1617", title: "Privacy Policy", link: "/privacy" },
-  { id: "1819", title: "Terms & Conditions", link: "/terms" },
+  { id: "1617", title: "Privacy", link: "/privacy" },
+  { id: "1819", title: "Terms", link: "/terms" },
 ];

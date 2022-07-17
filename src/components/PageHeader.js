@@ -29,7 +29,7 @@ function PageHeader() {
 
   // Return component
   return (
-    <nav className="relative container mx-auto p-6">
+    <nav className="relative container mx-auto p-6 border-b border-lightGray">
       {/** Links container */}
       <div className="flex items-center justify-between">
         {/** Logo */}

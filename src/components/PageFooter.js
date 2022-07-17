@@ -23,7 +23,7 @@ function PageFooter() {
 
   // Return component
   return (
-    <footer className="bg-veryDarkBlue">
+    <footer className="bg-secondary">
       {/** CONTAINER */}
       <div className="flex flex-col-reverse justify-between px-6 py-10 mx-auto space-y-8 md:flex-row md:space-y-0">
         {/** COL 1 - LOGO & SOCIAL LINKS */}
@@ -68,8 +68,8 @@ function PageFooter() {
               companyLinks?.slice(0, 4)?.map((item) => (
                 <CustomButton key={item?.id} isLink href={item?.link}>
                   <a
-                    className={` hover:text-brightRed ${
-                      router.pathname === item?.link ? "text-brightRed" : ""
+                    className={` hover:text-primary ${
+                      router.pathname === item?.link ? "text-primary" : ""
                     }`}
                   >
                     {item?.title}
@@ -84,8 +84,8 @@ function PageFooter() {
               companyLinks?.slice(4)?.map((item) => (
                 <CustomButton key={item?.id} isLink href={item?.link}>
                   <a
-                    className={` hover:text-brightRed ${
-                      router.pathname === item?.link ? "text-brightRed" : ""
+                    className={` hover:text-primary ${
+                      router.pathname === item?.link ? "text-primary" : ""
                     }`}
                   >
                     {item?.title}
@@ -105,7 +105,7 @@ function PageFooter() {
               <input
                 type="text"
                 name="emailAddr"
-                className="flex-1 px-4 rounded h-10 focus:outline-none"
+                className="flex-1 px-4 rounded h-12 focus:outline-none"
                 placeholder="Enter email address"
               />
               {/** Button */}
@@ -116,7 +116,7 @@ function PageFooter() {
                   e.preventDefault();
                   console.log("Clicked form!");
                 }}
-                className={tw?.btnSubscribe}
+                className={tw?.btnPrimary}
               >
                 Go
               </CustomButton>
@@ -130,11 +130,6 @@ function PageFooter() {
           </div>
         </div>
       </div>
-
-      {/** COPYRIGHT */}
-      {/* <div className="text-white text-center pb-5">
-          Copyright &copy; {`${moment.utc().format("YYYY")} ${siteInfo?.name}`}
-        </div> */}
     </footer>
   ); // close return
 } // close component

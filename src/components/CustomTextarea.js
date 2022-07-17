@@ -6,10 +6,10 @@ import tw from "../styles/twStyles";
 import CustomHelperMsg from "./CustomHelperMsg";
 
 // Component
-function CustomTextInput({
+function CustomTextarea({
   label,
   name,
-  type,
+  rows,
   divClass,
   inputClass,
   helperMsg,
@@ -19,11 +19,11 @@ function CustomTextInput({
   ...rest
 }) {
   // Debug
-  //console.log("Debug customTextInput: ",)
+  //console.log("Debug customTextarea: ",)
 
   // Return component
   return (
-    <div className={`mb-3 xl:w-96 ${divClass}`}>
+    <div className={`mb-5 xl:w-96 ${divClass}`}>
       {/** Label */}
       {label && (
         <label
@@ -35,13 +35,14 @@ function CustomTextInput({
       )}
 
       {/** Input */}
-      <input
+      <textarea
         {...rest}
+        id={name}
         name={name}
-        type={"text" || type}
+        rows={"3" || rows}
         placeholder={label || placeholder}
         className={`form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-secondary focus:outline-none ${inputClass}`}
-      />
+      ></textarea>
 
       {/** Helper msg */}
       {helperMsg && <CustomHelperMsg visible={helperMsg} title={helperMsg} />}
@@ -53,4 +54,4 @@ function CustomTextInput({
 } // close component
 
 // Export
-export default CustomTextInput;
+export default CustomTextarea;

@@ -12,7 +12,7 @@ function SectionFeatures() {
 
   // Return component
   return (
-    <section id="features" className="bg-veryLightGray">
+    <section id="features" className="bg-gray-50">
       {/** CONTAINER */}
       <div className="container flex flex-col mx-auto px-4 py-24 space-y-8 md:flex-row md:space-y-0">
         {/** COL 1 */}
@@ -22,7 +22,7 @@ function SectionFeatures() {
             What's different about Manage?
           </h2>
           {/** Sub title */}
-          <p className="max-w-sm text-center text-darkGrayishBlue md:text-left">
+          <p className="max-w-sm text-center text-black md:text-left">
             Manage provides all the functionality your team needs, without the
             complexity. Our software is tailor-made for modern digital product
             teams.
@@ -40,10 +40,10 @@ function SectionFeatures() {
                 className="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row"
               >
                 {/** Heading */}
-                <div className="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+                <div className="rounded-l-full bg-veryLightPrimary md:bg-transparent">
                   {/** Numbering */}
                   <div className="flex items-center space-x-2">
-                    <div className="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed">
+                    <div className="px-4 py-2 text-white rounded-full md:py-1 bg-primary">
                       {`0${index + 1}`}
                     </div>
                     {/** Title - small screens */}
@@ -57,7 +57,7 @@ function SectionFeatures() {
                   <h3 className="hidden mb-4 text-lg font-bold md:block">
                     {item?.title}
                   </h3>
-                  <p className="text-darkGrayishBlue">{item?.description}</p>
+                  <p>{item?.description}</p>
                 </div>
               </div>
             ))}

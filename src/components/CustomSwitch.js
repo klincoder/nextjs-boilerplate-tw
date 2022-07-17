@@ -6,7 +6,7 @@ import tw from "../styles/twStyles";
 import CustomHelperMsg from "./CustomHelperMsg";
 
 // Component
-function CustomRadio({
+function CustomSwitch({
   label,
   name,
   data,
@@ -20,7 +20,7 @@ function CustomRadio({
   ...rest
 }) {
   // Debug
-  //console.log("Debug customRadio: ",)
+  //console.log("Debug customSwitch: ",)
 
   // Return component
   return (
@@ -36,18 +36,23 @@ function CustomRadio({
       {data?.length > 0 &&
         typeof data === "object" &&
         data?.map((item, index) => (
-          <div key={item + index} className="form-check form-check-inline">
+          <div
+            key={item}
+            className="form-check form-check-inline form-switch mb-2 mr-5"
+          >
             {/** Input */}
             <input
-              type="radio"
+              {...rest}
               id={item}
-              name={name}
-              className={`form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-secondary checked:border-secondary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer ${inputClass}`}
-            />
+              value={item}
+              role="switch"
+              type="checkbox"
+              className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top cursor-pointer shadow-sm bg-gray-400 bg-no-repeat bg-contain checked:bg-primary checked:border-primary checked:disabled:bg-lightPrimary disabled:bg-gray-400 disabled:pointer-events-none disabled:opacity-60 focus:outline-none ${inputClass}`}
+            ></input>
             {/** Label */}
             <label
               htmlFor={item}
-              className="form-check-label inline-block text-gray-800 cursor-pointer text-sm"
+              className="form-check-label inline-block text-gray-800 cursor-pointer text-sm pl-0.5"
             >
               {item}
             </label>
@@ -64,4 +69,4 @@ function CustomRadio({
 } // close component
 
 // Export
-export default CustomRadio;
+export default CustomSwitch;

@@ -36,22 +36,29 @@ function CustomCheckbox({
       {data?.length > 0 &&
         typeof data === "object" &&
         data?.map((item, index) => (
-          <label
-            key={item}
-            htmlFor={item}
-            className="inline-flex items-center cursor-pointer mb-2 mr-2"
-          >
+          <div key={item} className="form-check form-check-inline">
             {/** Input */}
             <input
               {...rest}
               type="checkbox"
               id={item}
               value={item}
-              className={`border-0 rounded-lg text-primary ml-1 w-5 h-5 cursor-pointer ${inputClass}`}
+              name={`${name}[${index}]`}
+              className={`form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-primary checked:border-primary focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer ${inputClass}`}
             />
-            {/** label span */}
-            <span className="mx-2 text-xs font-semibold">{item}</span>
-          </label>
+            {/** Label */}
+            <label
+              htmlFor={item}
+              className="form-check-label inline-block text-gray-800 cursor-pointer text-sm"
+            >
+              {item}
+            </label>
+            {/** Debug */}
+            {/* {console.log(
+              "Debug checkboxGetIndex: ",
+              `${name}[${index}] - ${item}`
+            )} */}
+          </div>
         ))}
 
       {/** Helper msg */}

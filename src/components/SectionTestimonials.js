@@ -31,7 +31,7 @@ function SectionTestimonials() {
                 key={item?.id}
                 className={`${
                   index === 0 ? "flex" : "hidden md:flex"
-                } flex-col items-center p-6 space-y-6 mb-24 bg-veryLightGray md:w-1/3`}
+                } flex-col items-center p-6 space-y-6 mb-24 bg-gray-50 md:w-1/3`}
               >
                 {/** Image */}
                 <div className="-mt-14 ">
@@ -45,16 +45,10 @@ function SectionTestimonials() {
                 {/** Name */}
                 <h5 className="text-lg font-bold">{item?.name}</h5>
                 {/** Quote */}
-                <p className="text-sm text-darkGrayishBlue">{item?.quote}</p>
+                <p className="text-sm">{item?.quote}</p>
               </div>
             ))}
         </div>
-        {/** Button */}
-        {/* <div className="my-16">
-          <CustomButton isLink href="/register">
-            <a className={tw?.btnPrimary}>Get Started</a>
-          </CustomButton>
-        </div> */}
       </div>
     </section>
   ); // close return
