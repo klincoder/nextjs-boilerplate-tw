@@ -7,6 +7,7 @@ import tw from "../src/styles/twStyles";
 import { appImages } from "../src/config/data";
 import PageContent from "../src/components/PageContent";
 import CustomCard from "../src/components/CustomCard";
+import FormRegister from "../src/components/FormRegister";
 
 // Component
 function Register() {
@@ -19,11 +20,11 @@ function Register() {
       {/** SECTION - PAGE DETAILS */}
       <section id="register" className="bg-white">
         {/** CONTAINER */}
-        <div className="container mx-auto flex items-center justify-center px-4 py-14 w-full md:space-y-0">
+        <div className="container mx-auto w-full flex items-center justify-center px-4 pt-14 pb-24 md:space-y-0">
           {/** Card */}
-          <CustomCard>
+          <CustomCard isNormal title="Register">
             {/** Form */}
-            {/* <FormLogin csrfToken={csrfToken} /> */}
+            <FormRegister />
           </CustomCard>
         </div>
       </section>

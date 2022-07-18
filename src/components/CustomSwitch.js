@@ -3,7 +3,7 @@ import React from "react";
 
 // Import custom files
 import tw from "../styles/twStyles";
-import CustomHelperMsg from "./CustomHelperMsg";
+import CustomHelperText from "./CustomHelperText";
 
 // Component
 function CustomSwitch({
@@ -12,7 +12,7 @@ function CustomSwitch({
   data,
   divClass,
   inputClass,
-  helperMsg,
+  helperText,
   errName,
   errTouched,
   checkedVal,
@@ -60,10 +60,12 @@ function CustomSwitch({
         ))}
 
       {/** Helper msg */}
-      {helperMsg && <CustomHelperMsg visible={helperMsg} title={helperMsg} />}
+      {helperText && (
+        <CustomHelperText visible={helperText} title={helperText} />
+      )}
 
       {/** Error msg */}
-      <CustomHelperMsg isError title={errName} visible={errTouched} />
+      <CustomHelperText isError title={errName} visible={errTouched} />
     </div>
   ); // close return
 } // close component

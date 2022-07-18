@@ -5,12 +5,12 @@ import React from "react";
 import tw from "../styles/twStyles";
 
 // Component
-function CustomHelperMsg({ title, visible, isError }) {
+function CustomHelperText({ title, visible, isError }) {
   // If empty args, return null
   if (!visible || !title) return null;
 
   // Debug
-  //console.log("Debug customHelperMsg: ",)
+  //console.log("Debug customHelperText: ",)
 
   // Return component
   return (
@@ -18,7 +18,9 @@ function CustomHelperMsg({ title, visible, isError }) {
       {/** If visible */}
       {visible && (
         <div
-          className={`text-xs pt-1 ${isError ? "text-danger" : "text-gray"}`}
+          className={`text-xs pt-1 ${
+            isError ? "text-danger" : "text-gray-400"
+          }`}
         >
           {title}
         </div>
@@ -28,4 +30,4 @@ function CustomHelperMsg({ title, visible, isError }) {
 } // close component
 
 // Export
-export default CustomHelperMsg;
+export default CustomHelperText;

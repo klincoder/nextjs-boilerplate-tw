@@ -3,7 +3,7 @@ import React from "react";
 
 // Import custom files
 import tw from "../styles/twStyles";
-import CustomHelperMsg from "./CustomHelperMsg";
+import CustomHelperText from "./CustomHelperText";
 
 // Component
 function CustomTextInput({
@@ -12,7 +12,7 @@ function CustomTextInput({
   type,
   divClass,
   inputClass,
-  helperMsg,
+  helperText,
   errName,
   errTouched,
   placeholder,
@@ -40,14 +40,16 @@ function CustomTextInput({
         name={name}
         type={"text" || type}
         placeholder={label || placeholder}
-        className={`form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-secondary focus:outline-none ${inputClass}`}
+        className={`form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-secondary focus:outline-none placeholder:text-gray-400 ${inputClass}`}
       />
 
       {/** Helper msg */}
-      {helperMsg && <CustomHelperMsg visible={helperMsg} title={helperMsg} />}
+      {helperText && (
+        <CustomHelperText visible={helperText} title={helperText} />
+      )}
 
       {/** Error msg */}
-      <CustomHelperMsg isError title={errName} visible={errTouched} />
+      <CustomHelperText isError title={errName} visible={errTouched} />
     </div>
   ); // close return
 } // close component

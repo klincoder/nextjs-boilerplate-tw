@@ -11,8 +11,10 @@ function CustomButton({
   onClick,
   isNormal,
   isLink,
+  isSecondary,
   href,
   children,
+  btnClass,
   ...rest
 }) {
   // Debug
@@ -23,7 +25,15 @@ function CustomButton({
     <>
       {/** IsNormal */}
       {isNormal && (
-        <button type={type || "button"} onClick={onClick} {...rest}>
+        <button
+          {...rest}
+          type={type || "button"}
+          onClick={onClick}
+          className={
+            btnClass ||
+            `w-full mt-3 ${isSecondary ? tw?.btnSecondary : tw?.btnPrimary}`
+          }
+        >
           {children}
         </button>
       )}

@@ -22,20 +22,22 @@ function CustomCard({
   return (
     <>
       {/** IS NORMAL */}
-      <div
-        className={`block p-6 rounded-lg shadow-lg bg-white max-w-sm ${divClass}`}
-      >
-        {/** Card title */}
-        {title && (
-          <h5
-            className={`text-gray-900 text-xl font-medium mb-2 ${titleClass}`}
-          >
-            {title}
-          </h5>
-        )}
-        {/** Card body */}
-        {children}
-      </div>
+      {isNormal && (
+        <div
+          className={`block p-6 rounded-lg shadow-lg bg-white max-w-sm ${divClass}`}
+        >
+          {/** Card title */}
+          {title && (
+            <h5
+              className={`text-3xl font-semibold mb-5 pb-2 border-b border-gray-200 ${titleClass}`}
+            >
+              {title}
+            </h5>
+          )}
+          {/** Card body */}
+          {children}
+        </div>
+      )}
 
       {/** IS IMAGE */}
       {isImage && (

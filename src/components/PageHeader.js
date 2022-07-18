@@ -29,7 +29,7 @@ function PageHeader() {
 
   // Return component
   return (
-    <nav className="relative container mx-auto p-6 border-b border-lightGray">
+    <nav className="relative container mx-auto p-6 border-b border-gray-100">
       {/** Links container */}
       <div className="flex items-center justify-between">
         {/** Logo */}
@@ -73,7 +73,7 @@ function PageHeader() {
           isNormal
           id="toggleBtn"
           onClick={handleToggleMenu}
-          className={`block hamburger pb-2 md:hidden focus:outline-none`}
+          btnClass={`block hamburger pb-2 md:hidden focus:outline-none`}
         >
           {/** If toggle menu */}
           {toggleMenu ? (
@@ -88,8 +88,8 @@ function PageHeader() {
       {toggleMenu && (
         <div className="md:hidden">
           <div
-            id="menuLinks"
-            className="absolute flex flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+            id="menuLinksMobile"
+            className="absolute flex flex-col items-center self-end py-8 mt-6 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
           >
             {/** Loop navLinks */}
             {navLinks?.length > 0 &&
@@ -98,6 +98,17 @@ function PageHeader() {
                   <a className="hover:text-darkGrayishBlue">{item?.title}</a>
                 </CustomButton>
               ))}
+            {/** Buttons */}
+            <div className="w-full text-center px-4">
+              {/** Login button */}
+              <CustomButton isLink id="loginBtnSmallScreen" href="/login">
+                <a className={`w-full my-3 ${tw?.btnPrimary}`}>Login</a>
+              </CustomButton>
+              {/** Register button */}
+              <CustomButton isLink id="registerBtnSmallScreen" href="/register">
+                <a className={`w-full ${tw?.btnSecondary}`}>Register</a>
+              </CustomButton>
+            </div>
           </div>
         </div>
       )}

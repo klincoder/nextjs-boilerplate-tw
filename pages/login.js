@@ -21,9 +21,9 @@ function Login({ csrfToken }) {
       {/** SECTION - PAGE DETAILS */}
       <section id="login" className="bg-white">
         {/** CONTAINER */}
-        <div className="container mx-auto flex items-center justify-center px-4 py-14 w-full md:space-y-0">
+        <div className="container mx-auto w-full flex items-center justify-center px-4 pt-14 pb-24 md:space-y-0">
           {/** Card */}
-          <CustomCard>
+          <CustomCard isNormal title="Login">
             {/** Form */}
             <FormLogin csrfToken={csrfToken} />
           </CustomCard>

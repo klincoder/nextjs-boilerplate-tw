@@ -3,7 +3,7 @@ import React from "react";
 
 // Import custom files
 import tw from "../styles/twStyles";
-import CustomHelperMsg from "./CustomHelperMsg";
+import CustomHelperText from "./CustomHelperText";
 
 // Component
 function CustomTextarea({
@@ -12,7 +12,7 @@ function CustomTextarea({
   rows,
   divClass,
   inputClass,
-  helperMsg,
+  helperText,
   errName,
   errTouched,
   placeholder,
@@ -45,10 +45,12 @@ function CustomTextarea({
       ></textarea>
 
       {/** Helper msg */}
-      {helperMsg && <CustomHelperMsg visible={helperMsg} title={helperMsg} />}
+      {helperText && (
+        <CustomHelperText visible={helperText} title={helperText} />
+      )}
 
       {/** Error msg */}
-      <CustomHelperMsg isError title={errName} visible={errTouched} />
+      <CustomHelperText isError title={errName} visible={errTouched} />
     </div>
   ); // close return
 } // close component

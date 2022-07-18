@@ -31,6 +31,9 @@ export const intl = new Intl.NumberFormat();
 // FILE EXTENSIONS
 export const fileExtensions = ["jpg", "jpeg", "gif", "png"];
 
+// OTP DEFAULT TIMER
+export const otpDefaultTimer = 29;
+
 // APP COLORS
 export const appColors = {
   primary: "#301003",
@@ -95,6 +98,13 @@ export const alertMsg = {
   general: "Internal error. Please contact support.",
   loginSucc: "Login successful",
   loginErr: "Invalid credentials",
+  registerSucc: "Account created",
+  otpSendSucc: "We sent your OTP code. Check your inbox or spam.",
+  otpSendErr: "Failed to send OTP. Try again.",
+  otpVerifyErr: "Invalid code",
+  emailExistErr: "Email address already exist",
+  unernameExistErr: "Username is not available",
+  isRequiredAll: "All fields are required",
 };
 
 // NAV LINKS

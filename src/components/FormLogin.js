@@ -45,25 +45,26 @@ function FormLogin({ csrfToken }) {
   const initialValues = {
     username: "",
     pass: "",
-    select: "",
-    textarea: "",
-    checkbox: "",
-    radio: "",
-    switch: "",
+    // select: "",
+    // textarea: "",
+    // checkbox: "",
+    // radio: "",
+    // switch: "",
   };
 
   // Validation
   const validate = Yup.object({
     username: Yup.string().required("Required").max(50, "Too long"),
     pass: Yup.string().required("Required").min(8, "Too short"),
-    select: Yup.string().required("Required"),
-    textarea: Yup.string().required("Required"),
-    checkbox: Yup.array().min(1, "Select one or more"),
-    radio: Yup.string().required("Required"),
-    switch: Yup.array().min(1, "Select one or more"),
+    // select: Yup.string().required("Required"),
+    // textarea: Yup.string().required("Required"),
+    // checkbox: Yup.array().min(1, "Select one or more"),
+    // radio: Yup.string().required("Required"),
+    // switch: Yup.array().min(1, "Select one or more"),
   });
 
-  // Define submit function
+  // FUNCTIONS
+  // HANDLE SUBMIT FORM
   const onSubmit = (values, { setSubmitting }) => {
     // Define variables
     const finalUsername = values.username?.trim()?.toLowerCase();
@@ -146,22 +147,21 @@ function FormLogin({ csrfToken }) {
           <input type="hidden" name="csrfToken" defaultValue={csrfToken} />
 
           {/** Username */}
-          <CustomTextInputForm label="Username or email" name="username" />
+          <CustomTextInputForm name="username" label="Username or email" />
 
           {/** Pass */}
           <CustomPasswordForm
-            label="Password"
             name="pass"
+            label="Password"
             showPass={showPass}
             onClickShowPass={() => setShowPass(!showPass)}
           />
 
           {/** Button */}
-          <div className="text-center mt-6">
+          <div className="text-center">
             <CustomButton
               isNormal
               type="submit"
-              className={`w-full ${tw?.btnPrimary}`}
               disabled={!isValid || isSubmitting}
             >
               Login
@@ -170,20 +170,18 @@ function FormLogin({ csrfToken }) {
           </div>
 
           {/** OTHER LINKS */}
-          <div className="flex flex-wrap mt-6">
+          <div className="flex flex-wrap mt-3">
             {/** Forgot password */}
             <div className="w-1/2">
               <CustomButton isLink href="/password-recovery">
-                <a className="text-blueGray-200">
-                  <small>Forgot password?</small>
-                </a>
+                <a className="text-sm text-black underline">Forgot password?</a>
               </CustomButton>
             </div>
             {/** Register */}
             <div className="w-1/2 text-right">
               <CustomButton isLink href="/register">
-                <a className="text-blueGray-200">
-                  <small>Create new account</small>
+                <a className="text-sm text-black underline">
+                  Create new account
                 </a>
               </CustomButton>
             </div>

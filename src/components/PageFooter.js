@@ -112,11 +112,11 @@ function PageFooter() {
               <CustomButton
                 isNormal
                 type="submit"
+                btnClass={tw?.btnPrimary}
                 onClick={(e) => {
                   e.preventDefault();
                   console.log("Clicked form!");
                 }}
-                className={tw?.btnPrimary}
               >
                 Go
               </CustomButton>
