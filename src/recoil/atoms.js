@@ -8,6 +8,12 @@ export const appSettingsAtom = atom({
   default: null,
 });
 
+// CMS MENU ATOM
+export const cmsMenuAtom = atom({
+  key: "cmsMenuAtom",
+  default: false,
+});
+
 // ALL USERS ATOM
 export const allUsersAtom = atom({
   key: "allUsersAtom",

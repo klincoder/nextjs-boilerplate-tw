@@ -1,6 +1,9 @@
 // Import resources
 import moment from "moment";
 import { FaPlusCircle, FaWallet } from "react-icons/fa";
+import { AiOutlineFolder, AiOutlineUser } from "react-icons/ai";
+import { FiUsers } from "react-icons/fi";
+import { GrTransaction } from "react-icons/gr";
 
 // Import custom files
 import tw from "../styles/twStyles";
@@ -170,7 +173,7 @@ export const socialLinks = [
   { id: "123", title: "Facebook", image: appImages?.fb, slug: "facebook" },
   { id: "456", title: "Instagram", image: appImages?.ig, slug: "instagram" },
   { id: "789", title: "YouTube", image: appImages?.yt, slug: "youTube" },
-  { id: "1011", title: "Twitter", image: appImages?.tw, slug: "twitter" },
+  { id: "1011", title: "Twitter", image: appImages?.twitter, slug: "twitter" },
 ];
 
 // COMPANY LINKS
@@ -189,18 +192,41 @@ export const companyLinks = [
 export const userNavLinks = [
   {
     id: "123",
-    title: "User Page 1",
-    link: "/cms/",
-    leftIcon: <FaPlusCircle className={tw?.cmsNavIconLeft} />,
+    title: "My Ads",
+    link: "/cms/my-ads",
+    leftIcon: <AiOutlineUser className={tw?.cmsNavIconLeft} />,
   },
   {
     id: "456",
-    title: "User Page 2",
+    title: "Wallet",
     leftIcon: <FaWallet className={tw?.cmsNavIconLeft} />,
     isDropdown: true,
     options: [
-      { title: "Fund Wallet", link: "/cms" },
-      { title: "Transactions", link: "/cms" },
+      { title: "Fund Wallet", link: "/cms/fund-wallet" },
+      { title: "Transactions", link: "/cms/user-tranx" },
     ],
+  },
+];
+
+// ADMIN NAV LINKS
+export const adminNavLinks = [
+  {
+    id: "123",
+    title: "Manage Pages",
+    link: "/cms/all-pages",
+    leftIcon: <AiOutlineFolder className={tw?.cmsNavIconLeft} />,
+  },
+  {
+    id: "456",
+    title: "Manage Users",
+    link: "/cms/all-users",
+    leftIcon: <FiUsers className={tw?.cmsNavIconLeft} />,
+  },
+  {
+    id: "789",
+    title: "Transactions",
+    leftIcon: <GrTransaction className={tw?.cmsNavIconLeft} />,
+    isDropdown: true,
+    options: [{ title: "All Transactions", link: "/cms/all-tranx" }],
   },
 ];

@@ -7,20 +7,20 @@ import CmsContent from "../../src/components/CmsContent";
 import { appImages } from "../../src/config/data";
 
 // Component
-function BlankPageCmsAdmin() {
+function FundWallet() {
   // Debug
-  //console.log("Debug blankPageCmsAdmin: ",)
+  //console.log("Debug fundWallet: ",)
 
   // Return component
   return (
-    <CmsContent title="BlankPageCmsAdmin">
+    <CmsContent title="Fund Wallet">
       {/** Section 1 */}
       <div>
-        <h1 className="font-bold">BlankPageCmsAdmin</h1>
+        <h1 className="font-bold">Fund Wallet</h1>
       </div>
     </CmsContent>
   ); // close return
 } // close component
 
 // Export
-export default BlankPageCmsAdmin;
+export default FundWallet;

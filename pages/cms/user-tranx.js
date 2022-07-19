@@ -7,20 +7,20 @@ import CmsContent from "../../src/components/CmsContent";
 import { appImages } from "../../src/config/data";
 
 // Component
-function BlankPageCmsAdmin() {
+function UserTranx() {
   // Debug
-  //console.log("Debug blankPageCmsAdmin: ",)
+  //console.log("Debug userTranx: ",)
 
   // Return component
   return (
-    <CmsContent title="BlankPageCmsAdmin">
+    <CmsContent title="User Transactions">
       {/** Section 1 */}
       <div>
-        <h1 className="font-bold">BlankPageCmsAdmin</h1>
+        <h1 className="font-bold">User Transactions</h1>
       </div>
     </CmsContent>
   ); // close return
 } // close component
 
 // Export
-export default BlankPageCmsAdmin;
+export default UserTranx;

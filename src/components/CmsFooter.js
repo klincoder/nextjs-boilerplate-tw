@@ -23,7 +23,7 @@ function PageFooterCms() {
 
   // Return component
   return (
-    <footer className="relative w-full bg-white">
+    <footer className="relative w-full">
       {/** CONTAINER */}
       <div className="px-6 py-4">
         {/** Copyright */}

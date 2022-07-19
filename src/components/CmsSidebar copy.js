@@ -11,8 +11,7 @@ import tw from "../styles/twStyles";
 import CustomButton from "./CustomButton";
 import CustomImage from "./CustomImage";
 import { cmsMenuAtom } from "../recoil/atoms";
-import { adminNavLinks, appImages, userNavLinks } from "../config/data";
-import useAppSettings from "../hooks/useAppSettings";
+import { appImages, userNavLinks } from "../config/data";
 
 // Component
 function CmsSidebar() {
@@ -23,9 +22,6 @@ function CmsSidebar() {
   // Define toggle menu
   const toggleMenu = useRecoilValue(cmsMenuAtom);
 
-  // Define app settings
-  const { userID, userRole } = useAppSettings();
-
   // Debug
   // console.log("Debug cmsSidebar: ", {
   //   path: router.pathname,
@@ -34,27 +30,13 @@ function CmsSidebar() {
   //   isPath: isDropdownOptLinks?.includes(router.pathname),
   // });
 
-  // FUNCTIONS
-  // HANDLE ROLE LINKS
-  const handleRoleLinks = () => {
-    // If no args, return
-    if (!userRole) return [];
-    // Switch user role
-    switch (userRole) {
-      case "admin":
-        return adminNavLinks;
-      default:
-        return userNavLinks;
-    } // close switch
-  }; // close fxn
-
   // Return component
   return (
     <div
       id="cmsSidebar"
       className={`
         ${!toggleMenu && "hidden"} 
-        fixed w-60 h-full shadow-md bg-white overflow-auto md:block
+        fixed w-60 h-full shadow-md bg-white md:block
       `}
     >
       {/** LOGO */}
@@ -72,7 +54,7 @@ function CmsSidebar() {
       </div>
 
       {/** SIDEBAR LINKS */}
-      <ul className="px-1 relative">
+      <ul className="relative px-1">
         {/** Dashboard */}
         <li id="normalCmsNavLink" className="relative">
           <CustomButton isLink href="/cms">
@@ -90,8 +72,8 @@ function CmsSidebar() {
         </li>
 
         {/** Loop links - Normal */}
-        {handleRoleLinks()?.length > 0 &&
-          handleRoleLinks()?.map((item, index) => {
+        {userNavLinks?.length > 0 &&
+          userNavLinks?.map((item, index) => {
             // If item?.isDropdown
             if (item?.isDropdown) {
               // Get all options links array
@@ -190,7 +172,7 @@ function CmsSidebar() {
                 routerPath === "/cms/settings"
                   ? "text-primary"
                   : "text-gray-700"
-              } flex items-center text-sm pt-4 px-6 pb-24 h-12 overflow-hidden text-ellipsis whitespace-nowrap rounded hover:text-primary transition duration-300 ease-in-out`}
+              } flex items-center text-sm py-4 px-6 h-12 overflow-hidden text-ellipsis whitespace-nowrap rounded hover:text-primary transition duration-300 ease-in-out`}
             >
               {/** Icon */}
               <FaCog className={tw?.cmsNavIconLeft} />

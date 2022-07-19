@@ -7,20 +7,20 @@ import CmsContent from "../../src/components/CmsContent";
 import { appImages } from "../../src/config/data";
 
 // Component
-function BlankPageCmsAdmin() {
+function AllUsers() {
   // Debug
-  //console.log("Debug blankPageCmsAdmin: ",)
+  //console.log("Debug AllUsers: ",)
 
   // Return component
   return (
-    <CmsContent title="BlankPageCmsAdmin">
+    <CmsContent title="All Users">
       {/** Section 1 */}
       <div>
-        <h1 className="font-bold">BlankPageCmsAdmin</h1>
+        <h1 className="font-bold">All Users</h1>
       </div>
     </CmsContent>
   ); // close return
 } // close component
 
 // Export
-export default BlankPageCmsAdmin;
+export default AllUsers;

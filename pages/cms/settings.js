@@ -7,20 +7,20 @@ import CmsContent from "../../src/components/CmsContent";
 import { appImages } from "../../src/config/data";
 
 // Component
-function BlankPageCmsAdmin() {
+function Settings() {
   // Debug
-  //console.log("Debug blankPageCmsAdmin: ",)
+  //console.log("Debug settings: ",)
 
   // Return component
   return (
-    <CmsContent title="BlankPageCmsAdmin">
+    <CmsContent title="Settings">
       {/** Section 1 */}
       <div>
-        <h1 className="font-bold">BlankPageCmsAdmin</h1>
+        <h1 className="font-bold">Settings</h1>
       </div>
     </CmsContent>
   ); // close return
 } // close component
 
 // Export
-export default BlankPageCmsAdmin;
+export default Settings;

@@ -17,7 +17,7 @@ function ScrollUpButton() {
   // HANDLE BUTTON VISIBILITY
   const handleBtnVisibility = () => {
     // If window page y-azis offset
-    if (window.pageYOffset > 900) {
+    if (window.pageYOffset > 300) {
       setIsVisible(true);
     } else {
       setIsVisible(false);

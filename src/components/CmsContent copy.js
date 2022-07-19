@@ -14,7 +14,7 @@ function CmsContent({ title, children }) {
 
   // Return component
   return (
-    <div className="min-h-screen">
+    <div className="">
       {/** Page meta */}
       <PageMeta title={title} />
 

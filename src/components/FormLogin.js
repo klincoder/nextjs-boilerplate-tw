@@ -159,13 +159,16 @@ function FormLogin({ csrfToken }) {
 
           {/** Button */}
           <div className="text-center">
-            <CustomButton
+            {/* <CustomButton
               isNormal
               type="submit"
               disabled={!isValid || isSubmitting}
             >
               Login
               {isSubmitting && <CustomSpinner />}
+            </CustomButton> */}
+            <CustomButton isLink href="/cms">
+              <a className={`w-full ${tw?.btnPrimary}`}>Login</a>
             </CustomButton>
           </div>
 

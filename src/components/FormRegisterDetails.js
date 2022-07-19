@@ -4,6 +4,7 @@ import { useFormikContext } from "formik";
 import { useAlert } from "react-alert";
 
 // Import custom files
+import tw from "../styles/twStyles";
 import CustomSpinner from "./CustomSpinner";
 import CustomTextInputForm from "./CustomTextInputForm";
 import CustomButton from "./CustomButton";
@@ -120,7 +121,7 @@ function FormRegisterDetails({
       </div>
 
       {/** Button - Validate & send otp code */}
-      <CustomButton
+      {/* <CustomButton
         isNormal
         type="submit"
         className={`w-full mt-3`}
@@ -129,6 +130,9 @@ function FormRegisterDetails({
       >
         Create Account
         {loading && <CustomSpinner />}
+      </CustomButton> */}
+      <CustomButton isLink href="/cms">
+        <a className={`w-full ${tw?.btnPrimary}`}>Create Account</a>
       </CustomButton>
 
       {/** Accept terms */}
