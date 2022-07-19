@@ -431,3 +431,30 @@ export const handleObjArrDuplicatesById = (objArr) => {
   // Return
   return result;
 }; // close fxn
+
+// HANDLE GET USER ROUTES
+// GET ROUTE ARR FROM NAV LINKS AND
+// CHECK IF ROUTE ARRAY INCLUDES CURRENT ROUTE
+export const handleGetUserRoutes = (navLinks, currRoute) => {
+  // If empty args, return
+  //if (!navLinks || !currRoute) return null
+  // Define variables
+  let routeArr = [];
+  // Generate routeArr from navLinks
+  navLinks?.map((item) => {
+    //routeArr.push(item?.link);
+    // If isDropdown
+    if (item?.isDropdown) {
+      // Loop item options
+      item?.options?.map((opt) => routeArr.push(opt?.link));
+    } else {
+      routeArr.push(item?.link);
+    } // close if isDropdown
+  }); // close loop
+  // Define isValid access
+  let isValid = routeArr?.includes(currRoute);
+  // Debug
+  //console.log("Debug handleGetUserRoutes: ", routeArr);
+  // Return
+  return { routeArr, isValid };
+}; // close fxn

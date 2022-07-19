@@ -1,5 +1,6 @@
 // Import resources
 import React from "react";
+import { getSession } from "next-auth/react";
 
 // Import custom files
 import tw from "../src/styles/twStyles";
@@ -9,7 +10,7 @@ import FormPasswordRecovery from "../src/components/FormPasswordRecovery";
 import { appImages } from "../src/config/data";
 
 // Component
-function PasswordRecovery() {
+function PasswordRecovery({ currSession }) {
   // Debug
   //console.log("Debug passwordRecovery: ",)
 
@@ -37,3 +38,25 @@ function PasswordRecovery() {
 
 // Export
 export default PasswordRecovery;
+
+// GET SERVER SIDE PROPS
+export async function getServerSideProps(context) {
+  // Get current session
+  const session = await getSession(context);
+  // If session, redirect to homepage
+  if (session) {
+    return {
+      redirect: {
+        destination: `/`,
+        permanent: false,
+      }, // close redirect
+    }; // close return
+  } // close if session
+
+  // Return props
+  return {
+    props: {
+      currSession: session ? session?.user : null,
+    }, // close props
+  }; // close return
+} // close getServerSideProps

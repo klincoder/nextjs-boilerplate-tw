@@ -9,18 +9,18 @@ import { appImages, baseUrl } from "../../src/config/data";
 import VerifyPageAccess from "../../src/components/VerifyPageAccess";
 
 // Component
-function BlankPageCms({ currSession }) {
+function MyAds({ currSession }) {
   // Debug
-  //console.log("Debug blankPageCms: ",)
+  //console.log("Debug myAds: ",)
 
   // Return component
   return (
-    <CmsContent title="BlankPageCms">
+    <CmsContent title="My Ads">
       {/** VERIFY PAGE ACCESS */}
       <VerifyPageAccess currSession={currSession} pageAccess="user">
         {/** SECTION 1 */}
         <div>
-          <h1 className="font-bold">BlankPageCms</h1>
+          <h1 className="font-bold">My Ads</h1>
         </div>
       </VerifyPageAccess>
     </CmsContent>
@@ -28,7 +28,7 @@ function BlankPageCms({ currSession }) {
 } // close component
 
 // Export
-export default BlankPageCms;
+export default MyAds;
 
 // GET SEVERSIDE PROPS
 export async function getServerSideProps(context) {

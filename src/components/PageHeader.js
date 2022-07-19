@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import tw from "../styles/twStyles";
 import CustomImage from "./CustomImage";
 import CustomButton from "./CustomButton";
+import useAppSettings from "../hooks/useAppSettings";
 
 // Component
 function PageHeader() {
@@ -17,6 +18,9 @@ function PageHeader() {
 
   // Define router
   const router = useRouter();
+
+  // Define app settings
+  const { userID } = useAppSettings();
 
   // Debug
   //console.log("Debug pageHeader: ", router.pathname);
@@ -63,10 +67,22 @@ function PageHeader() {
             ))}
         </div>
 
-        {/** Login button */}
-        <CustomButton id="menuBtn" isLink href="/login">
-          <a className={`${tw?.btnPrimary} hidden md:block`}>Login</a>
-        </CustomButton>
+        {/** If userID */}
+        {userID ? (
+          <>
+            {/** My Account */}
+            <CustomButton id="menuBtn" isLink href="/cms">
+              <a className={`hover:text-primary`}>My Account</a>
+            </CustomButton>
+          </>
+        ) : (
+          <>
+            {/** Login button */}
+            <CustomButton id="menuBtn" isLink href="/login">
+              <a className={`${tw?.btnPrimary} hidden md:block`}>Login</a>
+            </CustomButton>
+          </>
+        )}
 
         {/** Toggle menu button */}
         <CustomButton
@@ -99,16 +115,23 @@ function PageHeader() {
                 </CustomButton>
               ))}
             {/** Buttons */}
-            <div className="w-full text-center px-4">
-              {/** Login button */}
-              <CustomButton isLink id="loginBtnSmallScreen" href="/login">
-                <a className={`w-full my-3 ${tw?.btnPrimary}`}>Login</a>
-              </CustomButton>
-              {/** Register button */}
-              <CustomButton isLink id="registerBtnSmallScreen" href="/register">
-                <a className={`w-full ${tw?.btnSecondary}`}>Register</a>
-              </CustomButton>
-            </div>
+            {/** if !userID */}
+            {!userID && (
+              <div className="w-full text-center px-4">
+                {/** Login button */}
+                <CustomButton isLink id="loginBtnSmallScreen" href="/login">
+                  <a className={`w-full my-3 ${tw?.btnPrimary}`}>Login</a>
+                </CustomButton>
+                {/** Register button */}
+                <CustomButton
+                  isLink
+                  id="registerBtnSmallScreen"
+                  href="/register"
+                >
+                  <a className={`w-full ${tw?.btnSecondary}`}>Register</a>
+                </CustomButton>
+              </div>
+            )}
           </div>
         </div>
       )}

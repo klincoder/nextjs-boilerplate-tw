@@ -6,12 +6,11 @@ import { getCsrfToken, getSession } from "next-auth/react";
 import tw from "../src/styles/twStyles";
 import PageContent from "../src/components/PageContent";
 import FormLogin from "../src/components/FormLogin";
-import { appImages } from "../src/config/data";
 import CustomCard from "../src/components/CustomCard";
-import CustomSwitch from "../src/components/CustomSwitch";
+import { appImages } from "../src/config/data";
 
 // Component
-function Login({ csrfToken }) {
+function Login({ csrfToken, currSession }) {
   // Debug
   //console.log("Debug login: ",);
 
@@ -46,7 +45,7 @@ export async function getServerSideProps(context) {
       redirect: {
         destination: `/`,
         permanent: false,
-      },
+      }, // close redirect
     }; // close return
   } // close if session
 

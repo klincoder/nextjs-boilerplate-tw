@@ -121,7 +121,7 @@ function FormPasswordRecoveryDetails({
       <CustomButton
         isNormal
         disabled={!isValid || isSubmitting || loading || !finalEmail}
-        onPress={async () => {
+        onClick={async () => {
           // If showNewPass
           if (showNewPass) {
             // Submit form

@@ -1,15 +1,16 @@
 // Import resources
 import React from "react";
+import { getSession } from "next-auth/react";
 
 // Import custom files
 import tw from "../../src/styles/twStyles";
 import CmsContent from "../../src/components/CmsContent";
-import { appImages } from "../../src/config/data";
+import { appImages, baseUrl } from "../../src/config/data";
 
 // Component
 function Cms() {
   // Debug
-  //console.log("Debug cms: ",)
+  //console.log("Debug cms: ",);
 
   // Return component
   return (
@@ -53,30 +54,6 @@ function Cms() {
           viverra libero et facilisis pretium. Sed tincidunt lacus vel semper
           ullamcorper. Fusce imperdiet vel nulla nec elementum.
         </p>
-        <p className="mb-3">
-          Quisque tincidunt porta pellentesque. Donec sed ligula interdum,
-          congue ipsum molestie, tempor arcu. Interdum et malesuada fames ac
-          ante ipsum primis in faucibus. Suspendisse condimentum magna accumsan
-          purus auctor, sed facilisis erat dictum. Nam semper dui eget vulputate
-          faucibus. In quis interdum purus. Sed vitae nisl vel mi laoreet
-          suscipit. Aliquam commodo hendrerit sapien, eget consequat dui
-          hendrerit auctor. Praesent placerat, elit non commodo dapibus, sapien
-          nisl semper mauris, non suscipit est tellus eget diam. Integer non
-          dictum mi. In a blandit neque. Vivamus auctor velit ac odio ultrices,
-          quis volutpat metus interdum. Phasellus neque tortor, eleifend a nunc
-          vel, ultricies pretium dui. Proin ac enim hendrerit, pellentesque erat
-          a, tincidunt lectus.
-        </p>
-        <p className="mb-3">
-          Phasellus nunc nisi, eleifend non rhoncus vitae, congue sit amet diam.
-          Curabitur ut elit sed ante ornare euismod sed efficitur eros. Ut a leo
-          ac neque venenatis tincidunt sit amet ac nulla. Nulla ac lacus at
-          nulla ullamcorper luctus vitae id nibh. Sed nec lacus id augue ornare
-          mollis nec eu massa. Mauris massa tortor, posuere eget felis quis,
-          laoreet maximus diam. Cras vel tortor dolor. Vestibulum laoreet
-          malesuada iaculis. Fusce tincidunt ligula a vulputate volutpat. Cras
-          pretium turpis est, et tincidunt enim auctor a.
-        </p>
       </div>
     </CmsContent>
   ); // close return
@@ -84,3 +61,25 @@ function Cms() {
 
 // Export
 export default Cms;
+
+// GET SEVERSIDE PROPS
+export async function getServerSideProps(context) {
+  // Get session
+  const session = await getSession(context);
+  // If no session, redirect
+  if (!session) {
+    return {
+      redirect: {
+        destination: `/login?callbackUrl=${baseUrl}/cms`,
+        permanent: false,
+      }, // close redirect
+    }; // close return
+  } // close if !session
+
+  // Return props
+  return {
+    props: {
+      currSession: session ? session : null,
+    }, // close props
+  }; // close return
+} // close getServerSide

@@ -65,7 +65,7 @@ function FormLogin({ csrfToken }) {
 
   // FUNCTIONS
   // HANDLE SUBMIT FORM
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting }) => {
     // Define variables
     const finalUsername = values.username?.trim()?.toLowerCase();
     const finalPass = values.pass?.trim();
@@ -80,55 +80,55 @@ function FormLogin({ csrfToken }) {
       : usernameExist?.data;
 
     // TEST
-    setTimeout(() => {
-      // Alert succ
-      alert.success(alertMsg?.loginSucc);
-      // Set submitting
-      setSubmitting(false);
-    }, 5000);
+    // setTimeout(() => {
+    //   // Alert succ
+    //   alert.success(alertMsg?.loginSucc);
+    //   // Set submitting
+    //   setSubmitting(false);
+    // }, 5000);
 
-    // // If !emailExist, return
-    // if (!emailExist?.isValid && !usernameExist?.isValid) {
-    //   // Alert err
-    //   alert.error(alertMsg?.loginErr);
-    //   return;
-    // } else {
-    //   // Get final callbackUrl
-    //   const finalCallbackUrl = routeHasQuery
-    //     ? router.query.callbackUrl
-    //     : "/cms";
+    // If !emailExist, return
+    if (!emailExist?.isValid && !usernameExist?.isValid) {
+      // Alert err
+      alert.error(alertMsg?.loginErr);
+      return;
+    } else {
+      // Get final callbackUrl
+      const finalCallbackUrl = routeHasQuery
+        ? router.query.callbackUrl
+        : "/cms";
 
-    //   // Verify and login user
-    //   const res = await signIn("credentials", {
-    //     redirect: false,
-    //     email: finalUsername,
-    //     password: finalPass,
-    //     callbackUrl: `${finalCallbackUrl}`,
-    //   });
-    //   // If res err
-    //   if (res?.error) {
-    //     // Alert err
-    //     alert.error(alertMsg?.loginErr);
-    //     setSubmitting(false);
-    //   } else {
-    //     // Send emails
-    //     // Login alert
-    //     await handleUserEmail(
-    //       userInfo?.username,
-    //       userInfo?.emailAddress,
-    //       todaysDate1,
-    //       apiRoutes?.login
-    //     );
-    //     // Alert succ
-    //     alert.success(alertMsg?.loginSucc);
-    //     // Set submitting
-    //     setSubmitting(false);
-    //     // Push to url
-    //     router.push(res?.url);
-    //     // Debug
-    //     //console.log("Debug formLogin: ", res);
-    //   } // close if res error
-    // } // close if emailExist
+      // Verify and login user
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: finalUsername,
+        password: finalPass,
+        callbackUrl: `${finalCallbackUrl}`,
+      });
+      // If res err
+      if (res?.error) {
+        // Alert err
+        alert.error(alertMsg?.loginErr);
+        setSubmitting(false);
+      } else {
+        // Send emails
+        // Login alert
+        await handleUserEmail(
+          userInfo?.username,
+          userInfo?.emailAddress,
+          todaysDate1,
+          apiRoutes?.login
+        );
+        // Alert succ
+        alert.success(alertMsg?.loginSucc);
+        // Set submitting
+        setSubmitting(false);
+        // Push to url
+        router.push(res?.url);
+        // Debug
+        //console.log("Debug formLogin: ", res);
+      } // close if res error
+    } // close if emailExist
   }; // close submit fxn
 
   // Return component
@@ -159,17 +159,17 @@ function FormLogin({ csrfToken }) {
 
           {/** Button */}
           <div className="text-center">
-            {/* <CustomButton
+            <CustomButton
               isNormal
               type="submit"
               disabled={!isValid || isSubmitting}
             >
               Login
               {isSubmitting && <CustomSpinner />}
-            </CustomButton> */}
-            <CustomButton isLink href="/cms">
-              <a className={`w-full ${tw?.btnPrimary}`}>Login</a>
             </CustomButton>
+            {/* <CustomButton isLink href="/cms">
+              <a className={`w-full ${tw?.btnPrimary}`}>Login</a>
+            </CustomButton> */}
           </div>
 
           {/** OTHER LINKS */}

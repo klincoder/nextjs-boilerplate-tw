@@ -10,7 +10,7 @@ import CustomCard from "../src/components/CustomCard";
 import FormRegister from "../src/components/FormRegister";
 
 // Component
-function Register() {
+function Register({ currSession }) {
   // Debug
   //console.log("Debug register: ",)
 

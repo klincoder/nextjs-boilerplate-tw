@@ -10,9 +10,9 @@ import { useRecoilValue } from "recoil";
 import tw from "../styles/twStyles";
 import CustomButton from "./CustomButton";
 import CustomImage from "./CustomImage";
+import useAppSettings from "../hooks/useAppSettings";
 import { cmsMenuAtom } from "../recoil/atoms";
 import { adminNavLinks, appImages, userNavLinks } from "../config/data";
-import useAppSettings from "../hooks/useAppSettings";
 
 // Component
 function CmsSidebar() {
@@ -38,9 +38,9 @@ function CmsSidebar() {
   // HANDLE ROLE LINKS
   const handleRoleLinks = () => {
     // If no args, return
-    if (!userRole) return [];
+    //if (!userRole) return [];
     // Switch user role
-    switch (userRole) {
+    switch ("user") {
       case "admin":
         return adminNavLinks;
       default:
