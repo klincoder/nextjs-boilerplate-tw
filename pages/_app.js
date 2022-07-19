@@ -5,12 +5,13 @@ import { SessionProvider } from "next-auth/react";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import { useRouter } from "next/router";
 import { RecoilRoot } from "recoil";
+import Script from "next/script";
 
 // Import custom files
 import "../src/styles/globals.css";
 import GetDatabaseContent from "../src/components/GetDatabaseContent";
+import ScrollUpButton from "../src/components/ScrollUpButton";
 import { appColors } from "../src/config/data";
-import Script from "next/script";
 
 // Define alert provider options
 const alertProviderOpt = {
@@ -55,7 +56,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
             <Component {...pageProps} />
 
             {/** Scroll up button */}
-            {/* <ScrollUpButton /> */}
+            <ScrollUpButton />
           </SessionProvider>
         </AlertProvider>
       </RecoilRoot>

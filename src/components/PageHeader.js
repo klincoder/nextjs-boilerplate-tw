@@ -53,8 +53,8 @@ function PageHeader() {
             navLinks?.map((item) => (
               <CustomButton isLink key={item?.id} href={item?.link}>
                 <a
-                  className={` hover:text-brightRed ${
-                    router.pathname === item?.link ? "text-brightRed" : ""
+                  className={` hover:text-primary ${
+                    router.pathname === item?.link ? "text-primary" : ""
                   }`}
                 >
                   {item?.title}

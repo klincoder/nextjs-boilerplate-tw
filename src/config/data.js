@@ -1,7 +1,9 @@
 // Import resources
 import moment from "moment";
+import { FaPlusCircle, FaWallet } from "react-icons/fa";
 
 // Import custom files
+import tw from "../styles/twStyles";
 import logo from "../assets/images/logo.svg";
 import logoDefault from "../assets/logo.png";
 import logoWhite from "../assets/images/logo-white.svg";
@@ -13,7 +15,7 @@ import testimonials3 from "../assets/images/avatar-shanai.png";
 import fb from "../assets/images/icon-facebook.svg";
 import ig from "../assets/images/icon-instagram.svg";
 import yt from "../assets/images/icon-youTube.svg";
-import tw from "../assets/images/icon-twitter.svg";
+import twitter from "../assets/images/icon-twitter.svg";
 
 // VARIABLES
 // BASE URL
@@ -64,7 +66,7 @@ export const appImages = {
   fb,
   ig,
   yt,
-  tw,
+  twitter,
 };
 
 // APP REGEX
@@ -181,4 +183,24 @@ export const companyLinks = [
   { id: "1415", title: "Contact", link: "/contact" },
   { id: "1617", title: "Privacy", link: "/privacy" },
   { id: "1819", title: "Terms", link: "/terms" },
+];
+
+// USER NAV LINKS
+export const userNavLinks = [
+  {
+    id: "123",
+    title: "User Page 1",
+    link: "/cms/",
+    leftIcon: <FaPlusCircle className={tw?.cmsNavIconLeft} />,
+  },
+  {
+    id: "456",
+    title: "User Page 2",
+    leftIcon: <FaWallet className={tw?.cmsNavIconLeft} />,
+    isDropdown: true,
+    options: [
+      { title: "Fund Wallet", link: "/cms" },
+      { title: "Transactions", link: "/cms" },
+    ],
+  },
 ];
