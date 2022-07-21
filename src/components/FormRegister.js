@@ -46,7 +46,7 @@ function FormRegister() {
   const router = useRouter();
 
   // Define app settings
-  const { todaysDate, todaysDate1 } = useAppSettings();
+  const { todaysDate, todaysDate1, handleEmailExist } = useAppSettings();
 
   // Debug
   //console.log("Debug formRegister: ",)
@@ -93,27 +93,22 @@ function FormRegister() {
 
   // FUNCTIONS
   // HANDLE RESEND OTP
-  const handleResendOtp = async (email) => {
+  const handleResendOtp = async () => {
+    // Define variables
+    const rUsername = formVal?.username;
+    const rEmailAddr = formVal?.emailAddr;
     // If empty args, return null
-    if (!email) return null;
+    if (!rUsername || !rEmailAddr) return null;
     // Show loading
     setLoading(true);
-    // Define user info
-    const emailExist = handleEmailExist(email);
-    const userInfo = emailExist?.data;
     // Set otp code
     setOtpCode(genOtpCode);
     // Send otp code to user
-    await handleUserEmail(
-      userInfo?.username,
-      userInfo?.emailAddress,
-      genOtpCode,
-      apiRoutes?.otp
-    );
+    await handleUserEmail(rUsername, rEmailAddr, genOtpCode, apiRoutes?.otp);
     // Set otp timer to default
     setOtpTimer(otpDefaultTimer);
     // Alert succ
-    alert.success(alertMsg?.otpSent);
+    alert.success(alertMsg?.otpSendSucc);
     // Hide loading
     setLoading(false);
   }; // close fxn
@@ -234,28 +229,42 @@ function FormRegister() {
               {/** Otp input */}
               <CustomOtpInputForm
                 name="verifyCodeInput"
+                isLoading={loading}
                 onSubmitCode={handleSubmit}
               />
 
               {/** Resend otp timer */}
-              <div className="items-center justify-between mt-6">
+              <div className="mt-6 font-semibold">
                 {/** If otpTimer > 0 */}
                 {otpTimer > 0 ? (
-                  <p className="text-center text-lg text-primary">
-                    Resend code in {otpTimer}s
+                  <p className="text-sm text-primary text-center">
+                    Resend OTP in {otpTimer}s
                   </p>
                 ) : (
-                  // Resend code
-                  <div
-                    className="text-lg text-primary underline"
-                    onClick={async () => {
-                      // Await resend otp
-                      const emailVal = values.emailAddr?.trim()?.toLowerCase();
-                      await handleResendOtp(emailVal);
-                    }}
-                  >
-                    Resend OTP
-                    {loading && <CustomSpinner />}
+                  // Resend otp or cancel
+                  <div className="flex items-center justify-between">
+                    {/** Resend otp */}
+                    <div
+                      aria-disabled
+                      className="text-base text-primary underline cursor-pointer"
+                      onClick={async () => await handleResendOtp()}
+                    >
+                      Resend OTP
+                    </div>
+                    {/** Cancel */}
+                    <div
+                      aria-disabled
+                      className="text-base text-gray-400 underline cursor-pointer"
+                      onClick={() => {
+                        // Reset form
+                        resetForm();
+                        setFormVal(null);
+                        setShowOtpInput(false);
+                        setOtpTimer(otpDefaultTimer);
+                      }}
+                    >
+                      Cancel
+                    </div>
                   </div>
                 )}
               </div>

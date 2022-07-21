@@ -1,5 +1,6 @@
 // Import resources
 import moment from "moment";
+import Mailjet from "node-mailjet";
 import { FaPlusCircle, FaWallet } from "react-icons/fa";
 import { AiOutlineFolder, AiOutlineUser } from "react-icons/ai";
 import { FiUsers } from "react-icons/fi";
@@ -27,6 +28,12 @@ export const baseUrl =
     ? process.env.NEXT_PUBLIC_BASEURL_PROD
     : process.env.NEXT_PUBLIC_BASEURL_DEV;
 
+// MAILJET CONN
+export const mailjetEmail = Mailjet.apiConnect(
+  process.env.NEXT_PUBLIC_MAILJET_API_KEY,
+  process.env.NEXT_PUBLIC_MAILJET_SECRET_KEY
+);
+
 // CURRENCY SYMBOL
 export const currSymbol = { ngn: "₦", btc: "₿", usd: "$", gh: "GH₵" };
 
@@ -37,7 +44,7 @@ export const intl = new Intl.NumberFormat();
 export const fileExtensions = ["jpg", "jpeg", "gif", "png"];
 
 // OTP DEFAULT TIMER
-export const otpDefaultTimer = 29;
+export const otpDefaultTimer = 89;
 
 // APP COLORS
 export const appColors = {
@@ -229,4 +236,25 @@ export const adminNavLinks = [
     isDropdown: true,
     options: [{ title: "All Transactions", link: "/cms/all-tranx" }],
   },
+];
+
+// NOTIFICATIONS LIST
+export const notificationsList = [
+  {
+    id: "123",
+    title: "New App Update",
+    description: "Lorep ipsum lorep ipsum lorep ipsum lorep ipsum.",
+  },
+  {
+    id: "456",
+    title: "Upcoming event",
+    description:
+      "Lorep ipsum lorep ipsum lorep ipsum lorep ipsum lorep ipsum lorep ipsum lorep ipsum.",
+  },
+];
+
+// PROFILE LIST
+export const profileList = [
+  { id: "123", title: "Edit Profile", link: "/cms" },
+  { id: "456", title: "Settings", link: "/cms/settings" },
 ];

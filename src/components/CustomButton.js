@@ -12,9 +12,11 @@ function CustomButton({
   isNormal,
   isLink,
   isSecondary,
+  isModal,
   href,
   children,
   btnClass,
+  modalID,
   ...rest
 }) {
   // Debug
@@ -43,6 +45,19 @@ function CustomButton({
         <Link href={href || "/"} {...rest}>
           {children}
         </Link>
+      )}
+
+      {/** IsModal */}
+      {isModal && (
+        <button
+          {...rest}
+          type="button"
+          onClick={onClick}
+          data-bs-toggle="modal"
+          data-bs-target={`#${modalID}`}
+        >
+          {children}
+        </button>
       )}
     </>
   ); // close return

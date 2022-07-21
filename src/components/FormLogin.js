@@ -154,7 +154,7 @@ function FormLogin({ csrfToken }) {
             name="pass"
             label="Password"
             showPass={showPass}
-            onClickShowPass={() => setShowPass(!showPass)}
+            onShowPass={() => setShowPass(!showPass)}
           />
 
           {/** Button */}
@@ -168,7 +168,7 @@ function FormLogin({ csrfToken }) {
               {isSubmitting && <CustomSpinner />}
             </CustomButton>
             {/* <CustomButton isLink href="/cms">
-              <a className={`w-full ${tw?.btnPrimary}`}>Login</a>
+              <a className={`w-full text-center ${tw?.btnPrimary}`}>Login</a>
             </CustomButton> */}
           </div>
 

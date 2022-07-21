@@ -1,11 +1,6 @@
 // Import resources
-import mailjet from "node-mailjet";
-
-// Connect to mailjet
-const mailjetConn = mailjet.connect(
-  process.env.NEXT_PUBLIC_MAILJET_API_KEY,
-  process.env.NEXT_PUBLIC_MAILJET_SECRET_KEY
-);
+// Import custom files
+import { baseUrl, mailjetEmail } from "../../src/config/data";
 
 // EXPORT HANDLER
 export default async function handler(req, res) {
@@ -25,7 +20,7 @@ export default async function handler(req, res) {
     const emailSender = reqData?.sender;
 
     // Send email and await request
-    await mailjetConn
+    await mailjetEmail
       .post("send", { version: "v3.1" })
       .request({
         Messages: [
@@ -71,5 +66,5 @@ export default async function handler(req, res) {
   } else if (req.method === "GET") {
     // HANDLE GET REQUEST
     res.send("GET request works!");
-  } // close if reqtype
+  } // close if reqMethod
 } // close handler

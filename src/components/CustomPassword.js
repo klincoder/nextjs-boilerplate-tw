@@ -11,7 +11,7 @@ function CustomPassword({
   label,
   name,
   showPass,
-  onClickShowPass,
+  onShowPass,
   divClass,
   inputClass,
   helperText,
@@ -47,7 +47,7 @@ function CustomPassword({
         />
         <div
           className="p-1.5 border border-l-0 border-solid border-gray-300 rounded-r cursor-pointer focus:outline-none"
-          onClick={onClickShowPass}
+          onClick={onShowPass}
         >
           {showPass ? (
             <AiOutlineEyeInvisible size={24} className="text-gray-600" />

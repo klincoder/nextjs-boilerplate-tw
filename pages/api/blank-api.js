@@ -1,6 +1,6 @@
 // Import resources
-
 // Import custom files
+import { baseUrl, mailjetEmail } from "../../src/config/data";
 
 // EXPORT HANDLER
 export default async function handler(req, res) {

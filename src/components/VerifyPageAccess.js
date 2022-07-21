@@ -10,7 +10,7 @@ import PageAccessItem from "./PageAccessItem";
 // Component
 function VerifyPageAccess({ currSession, pageAccess, children }) {
   // Define user role
-  const userRole = currSession?.role;
+  const userRole = currSession?.user?.role;
 
   // Define router
   const router = useRouter();
@@ -28,7 +28,14 @@ function VerifyPageAccess({ currSession, pageAccess, children }) {
     currSession && adminRoutes?.isValid && userRole === pageAccess;
 
   // Debug
-  //console.log("Debug verifyPageAccess: ",);
+  // console.log("Debug verifyPageAccess: ", {
+  //   isUserAccess,
+  //   isAdminAccess,
+  //   userRole,
+  //   pageAccess,
+  //   currRoute,
+  //   currSession,
+  // });
 
   // FUNCTIONS
   // HANDLE VERIFY PAGE ACCESS

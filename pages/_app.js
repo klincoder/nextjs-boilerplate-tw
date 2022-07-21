@@ -9,9 +9,9 @@ import Script from "next/script";
 
 // Import custom files
 import "../src/styles/globals.css";
+import { appColors } from "../src/config/data";
 import GetDatabaseContent from "../src/components/GetDatabaseContent";
 import ScrollUpButton from "../src/components/ScrollUpButton";
-import { appColors } from "../src/config/data";
 
 // Define alert provider options
 const alertProviderOpt = {
@@ -23,11 +23,11 @@ const alertProviderOpt = {
 
 // Component
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
-  // Define router
-  const router = useRouter();
-
   // Define isProdEnv
   const isProdEnv = process.env.NODE_ENV === "production";
+
+  // Define router
+  const router = useRouter();
 
   // Debug
   //console.log("Debug appjs: ",);

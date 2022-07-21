@@ -1,5 +1,6 @@
 // Import resources
 import moment from "moment";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useAlert } from "react-alert";
 import { useRecoilValue } from "recoil";
@@ -112,14 +113,14 @@ function useAppSettings() {
     return await signOut({ redirect: false, callbackUrl: "/" })
       .then((apiRes) => {
         // Debug
-        //console.log("Debug: ", apiRes);
+        //console.log("Debug handleLogout: ", apiRes);
         // Alert succ
         alert.success("Logout successful");
         // Push to login page
         router.replace(apiRes?.url);
       })
       .catch((err) => {
-        console.log("Debug logout: ", err.message);
+        console.log("Debug handleLogout: ", err.message);
       });
   }; // close fxn
 

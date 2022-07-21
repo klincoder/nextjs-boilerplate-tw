@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
   if (session) {
     return {
       redirect: {
-        destination: `/`,
+        destination: `/cms`,
         permanent: false,
       }, // close redirect
     }; // close return

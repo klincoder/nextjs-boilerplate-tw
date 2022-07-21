@@ -4,13 +4,14 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { FaTachometerAlt, FaCog } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { useRouter } from "next/router";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 
 // Import custom files
 import tw from "../styles/twStyles";
 import CustomButton from "./CustomButton";
 import CustomImage from "./CustomImage";
 import useAppSettings from "../hooks/useAppSettings";
+import CustomDivider from "./CustomDivider";
 import { cmsMenuAtom } from "../recoil/atoms";
 import { adminNavLinks, appImages, userNavLinks } from "../config/data";
 
@@ -21,7 +22,7 @@ function CmsSidebar() {
   const routerPath = router.pathname;
 
   // Define toggle menu
-  const toggleMenu = useRecoilValue(cmsMenuAtom);
+  const [toggleMenu, setToggleMenu] = useRecoilState(cmsMenuAtom);
 
   // Define app settings
   const { userID, userRole } = useAppSettings();
@@ -48,33 +49,29 @@ function CmsSidebar() {
     } // close switch
   }; // close fxn
 
+  // HANDLE CLOSE SIDEBAR
+  const handleCloseSidebar = () => {
+    // Set toggle menu to false
+    setToggleMenu(false);
+  }; // close fxn
+
   // Return component
   return (
     <div
       id="cmsSidebar"
       className={`
         ${!toggleMenu && "hidden"} 
-        fixed w-60 h-full shadow-md bg-white overflow-auto md:block
+        fixed w-60 h-full shadow-lg bg-white overflow-auto md:block
       `}
     >
-      {/** LOGO */}
-      <div className="cursor-pointer pt-8 pb-4 px-6">
-        <CustomButton isLink href="/" passHref>
-          <a>
-            <CustomImage
-              image={appImages?.logo}
-              alt="logo"
-              // width={146}
-              // height={24}
-            />
-          </a>
-        </CustomButton>
-      </div>
-
       {/** SIDEBAR LINKS */}
       <ul className="px-1 relative">
         {/** Dashboard */}
-        <li id="normalCmsNavLink" className="relative">
+        <li
+          id="normalCmsNavLink"
+          className="relative"
+          onClick={handleCloseSidebar}
+        >
           <CustomButton isLink href="/cms">
             <a
               className={`${
@@ -135,7 +132,11 @@ function CmsSidebar() {
                     {/** Loop dropdown links */}
                     {item?.options?.length > 0 &&
                       item?.options?.map((opt, optIndex) => (
-                        <li key={optIndex + 1} className="relative">
+                        <li
+                          key={optIndex + 1}
+                          className="relative"
+                          onClick={handleCloseSidebar}
+                        >
                           <CustomButton isLink href={opt?.link}>
                             <a
                               className={`${
@@ -159,6 +160,7 @@ function CmsSidebar() {
                   key={item?.id + index}
                   id="normalCmsNavLink"
                   className="relative"
+                  onClick={handleCloseSidebar}
                 >
                   <CustomButton isLink href={item?.link}>
                     <a
@@ -180,17 +182,17 @@ function CmsSidebar() {
           })}
 
         {/** Divider */}
-        <hr className="my-2" />
+        <CustomDivider />
 
         {/** Settings */}
-        <li id="normalCmsNavLink" className="relative">
+        <li id="normalCmsNavLink" className="relative mb-24">
           <CustomButton isLink href="/cms/settings">
             <a
               className={`${
                 routerPath === "/cms/settings"
                   ? "text-primary"
                   : "text-gray-700"
-              } flex items-center text-sm pt-4 px-6 pb-24 h-12 overflow-hidden text-ellipsis whitespace-nowrap rounded hover:text-primary transition duration-300 ease-in-out`}
+              } flex items-center text-sm pt-1 px-6 h-12 overflow-hidden text-ellipsis whitespace-nowrap rounded hover:text-primary transition duration-300 ease-in-out`}
             >
               {/** Icon */}
               <FaCog className={tw?.cmsNavIconLeft} />

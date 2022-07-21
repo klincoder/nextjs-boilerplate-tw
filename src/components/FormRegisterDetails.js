@@ -11,7 +11,7 @@ import CustomButton from "./CustomButton";
 import useAppSettings from "../hooks/useAppSettings";
 import CustomPasswordForm from "./CustomPasswordForm";
 import { alertMsg, apiRoutes } from "../config/data";
-import { handleIsEmptyForm } from "../config/functions";
+import { handleIsEmptyForm, handleUserEmail } from "../config/functions";
 
 // Component
 function FormRegisterDetails({
@@ -107,33 +107,38 @@ function FormRegisterDetails({
           <CustomPasswordForm
             name="pass"
             label="Password"
-            onClickShowPass={() => setShowPass(!showPass)}
+            showPass={showPass}
+            onShowPass={() => setShowPass(!showPass)}
           />
         </div>
+
         {/** Repeat Password */}
         <div className="w-full md:w-1/2">
           <CustomPasswordForm
             name="repeatPass"
             label="Repeat Password"
-            onClickShowPass={() => setShowPass(!showPass)}
+            showPass={showPass}
+            onShowPass={() => setShowPass(!showPass)}
           />
         </div>
       </div>
 
       {/** Button - Validate & send otp code */}
-      {/* <CustomButton
-        isNormal
-        type="submit"
-        className={`w-full mt-3`}
-        onClick={() => handleSendOtpEmail()}
-        disabled={!isValid || isSubmitting || loading}
-      >
-        Create Account
-        {loading && <CustomSpinner />}
-      </CustomButton> */}
-      <CustomButton isLink href="/cms">
-        <a className={`w-full ${tw?.btnPrimary}`}>Create Account</a>
-      </CustomButton>
+      <div className="text-center">
+        <CustomButton
+          isNormal
+          type="submit"
+          //className={`w-full mt-3`}
+          onClick={async () => await handleSendOtpEmail()}
+          disabled={!isValid || isSubmitting || loading}
+        >
+          Create Account
+          {loading && <CustomSpinner />}
+        </CustomButton>
+        {/* <CustomButton isLink href="/cms">
+          <a className={`w-full ${tw?.btnPrimary}`}>Create Account</a>
+        </CustomButton> */}
+      </div>
 
       {/** Accept terms */}
       <div className="text-xs text-center text-gray-500 my-2">

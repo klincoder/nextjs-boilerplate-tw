@@ -4,8 +4,8 @@ import { getSession } from "next-auth/react";
 
 // Import custom files
 import tw from "../../src/styles/twStyles";
-import CmsContent from "../../src/components/CmsContent";
 import { appImages, baseUrl } from "../../src/config/data";
+import CmsContent from "../../src/components/CmsContent";
 
 // Component
 function Cms() {

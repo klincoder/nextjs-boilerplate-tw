@@ -8,15 +8,16 @@ import tw from "../styles/twStyles";
 import CustomButton from "./CustomButton";
 import CustomImage from "./CustomImage";
 import useAppSettings from "../hooks/useAppSettings";
+import CustomModal from "./CustomModal";
 import { appImages, companyLinks, socialLinks } from "../config/data";
 
 // Component
 function PageFooterCms() {
-  // Define app settings
-  const { siteInfo } = useAppSettings();
-
   // Define router
   const router = useRouter();
+
+  // Define app settings
+  const { siteInfo, handleLogout } = useAppSettings();
 
   // Debug
   //console.log("Debug pagefooterCms: ",)

@@ -3,7 +3,7 @@ import moment from "moment";
 import axios from "axios";
 
 // Import custom files
-import { fileExtensions, currSymbol } from "./data";
+import { fileExtensions, currSymbol, baseUrl } from "./data";
 
 // FUNCTIONS
 // HANDLE USER EMAIL
@@ -13,7 +13,7 @@ export const handleUserEmail = async (toName, toEmail, msg, api, fromEmail) => {
   // Return and await response
   return await axios({
     method: "POST",
-    url: `${baseURL}/api/${api}`,
+    url: `${baseUrl}/api/${api}`,
     data: {
       data: {
         toName: toName,
@@ -43,7 +43,7 @@ export const handleAdminEmail = async (msg, api, fromEmail) => {
   // Return and await response
   return await axios({
     method: "POST",
-    url: `${baseURL}/api/${api}`,
+    url: `${baseUrl}/api/${api}`,
     data: {
       data: {
         toName: "Bulkahia Admin",
@@ -168,7 +168,7 @@ export const handleIsEmptyForm = (obj, propsToRemove) => {
 
 // HANDLE GENERATE OTP CODE
 export const handleGenOtpCode = () => {
-  const code = Math.floor(1000 + Math.random() * 9000); //Math.floor(Math.random() * 999999 + 1);
+  const code = Math.floor(1000 + Math.random() * 999999); //Math.floor(Math.random() * 999999 + 1);
   return code.toString();
 }; // close fxn
 
@@ -406,13 +406,13 @@ export const handleFormatDate = (dateVal, formatType) => {
   // Switch formatType
   switch (formatType) {
     case 1:
-      result = moment.utc(dateVal).format();
-      break;
-    case 2:
       result = moment.utc(dateVal).format("MMM D, YYYY h:mm A");
       break;
-    case 3:
+    case 2:
       result = moment.utc(dateVal).format("YYYY-MM-DD");
+      break;
+    case 3:
+      result = moment.utc(dateVal).format();
       break;
     default:
       result = moment.utc(dateVal).format("MMM D, YYYY");

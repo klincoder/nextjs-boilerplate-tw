@@ -9,7 +9,7 @@ import CustomButton from "./CustomButton";
 import CustomSpinner from "./CustomSpinner";
 
 // Component
-function CustomOtpInputForm({ name, type, onSubmitCode, ...rest }) {
+function CustomOtpInputForm({ name, type, onSubmitCode, isLoading, ...rest }) {
   // Define formik context
   const {
     values,
@@ -38,16 +38,16 @@ function CustomOtpInputForm({ name, type, onSubmitCode, ...rest }) {
         inputClass={touched[name] && errors[name] && "border-danger"}
       />
 
-      {/** */}
+      {/** Button */}
       <CustomButton
         isNormal
         type="submit"
         className="w-full mt-3"
         onClick={onSubmitCode}
-        disabled={!isValid || isSubmitting}
+        disabled={!isValid || isSubmitting || isLoading}
       >
         Submit
-        {isSubmitting && <CustomSpinner />}
+        {(isSubmitting || isLoading) && <CustomSpinner />}
       </CustomButton>
     </>
   ); // close return

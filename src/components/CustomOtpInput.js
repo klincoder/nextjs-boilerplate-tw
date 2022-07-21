@@ -25,17 +25,9 @@ function CustomOtpInput({
   return (
     <div className={`mb-4 xl:w-96 ${divClass}`}>
       {/** Label */}
-      {/* <label
-        htmlFor={name}
-        className="form-label inline-block text-sm font-semibold mb-1"
-      >
-        {label || "Verification Code"}
-      </label> */}
       <div className="text-center mb-3">
-        <h3>Verification Code</h3>
-        <p>
-          Enter the OTP code we sent to your email address (Inbox or spam
-          folder).
+        <p className="text-base">
+          Enter the OTP code we sent to your email address inbox or spam folder.
         </p>
       </div>
 

@@ -1,7 +1,10 @@
 // Import resources
 import bcryptjs from "bcryptjs";
 
-// Export handler
+// Import custom files
+import { baseUrl } from "../../src/config/data";
+
+// EXPORT HANDLER
 export default async function handler(req, res) {
   // If req.method === POST
   if (req.method === "POST") {
@@ -25,5 +28,5 @@ export default async function handler(req, res) {
     // HANDLE GET REQUEST
     // Send result
     res.status(200).send("GET request works!");
-  }
-}
+  } // close if reqMethod
+} // close handler
