@@ -1,5 +1,5 @@
 // Import resources
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useAlert } from "react-alert";
@@ -12,6 +12,7 @@ import FormRegisterDetails from "./FormRegisterDetails";
 import CustomButton from "./CustomButton";
 import useAppSettings from "../hooks/useAppSettings";
 import CustomSpinner from "./CustomSpinner";
+import ResendOtp from "./ResendOtp";
 import { appRegex, apiRoutes, alertMsg, otpDefaultTimer } from "../config/data";
 import {
   handleGenOtpCode,
@@ -120,7 +121,7 @@ function FormRegister() {
     const finalUsername = values.username?.trim()?.toLowerCase();
     const finalEmail = values.emailAddr?.trim()?.toLowerCase();
     const finalPass = values.pass?.trim();
-    const finalPhoneNum = values.phoneNum?.trim();
+    const finalPhoneNum = values.phoneNum?.trim() || "";
     const finalVerifyCodeInput = values.verifyCodeInput?.trim();
 
     // If !finalVerifyCodeInput return
@@ -152,6 +153,7 @@ function FormRegister() {
             fullName: finalFullName,
             username: finalUsername,
             emailAddress: finalEmail,
+            phoneNumber: finalPhoneNum,
             password: hashPass,
             emailVerified: true,
             acctStatus: "active",
@@ -196,20 +198,6 @@ function FormRegister() {
     } // close if
   }; // close submit fxn
 
-  // SIDE EFFECTS
-  // CREATE OTP TIMER
-  useEffect(() => {
-    // If empty args, return
-    if (showOtpInput !== true) return;
-    // Get timer
-    const timer =
-      otpTimer > 0 && setInterval(() => setOtpTimer(otpTimer - 1), 1000);
-    // Debug
-    //console.log("Debug timerInterval: ", otpTimer);
-    // Clean up
-    return () => clearInterval(timer);
-  }, [otpTimer, showOtpInput]);
-
   // Return component
   return (
     <Formik
@@ -228,46 +216,24 @@ function FormRegister() {
             <>
               {/** Otp input */}
               <CustomOtpInputForm
+                type="submit"
                 name="verifyCodeInput"
                 isLoading={loading}
                 onSubmitCode={handleSubmit}
               />
 
-              {/** Resend otp timer */}
-              <div className="mt-6 font-semibold">
-                {/** If otpTimer > 0 */}
-                {otpTimer > 0 ? (
-                  <p className="text-sm text-primary text-center">
-                    Resend OTP in {otpTimer}s
-                  </p>
-                ) : (
-                  // Resend otp or cancel
-                  <div className="flex items-center justify-between">
-                    {/** Resend otp */}
-                    <div
-                      aria-disabled
-                      className="text-base text-primary underline cursor-pointer"
-                      onClick={async () => await handleResendOtp()}
-                    >
-                      Resend OTP
-                    </div>
-                    {/** Cancel */}
-                    <div
-                      aria-disabled
-                      className="text-base text-gray-400 underline cursor-pointer"
-                      onClick={() => {
-                        // Reset form
-                        resetForm();
-                        setFormVal(null);
-                        setShowOtpInput(false);
-                        setOtpTimer(otpDefaultTimer);
-                      }}
-                    >
-                      Cancel
-                    </div>
-                  </div>
-                )}
-              </div>
+              {/** Resend otp */}
+              <ResendOtp
+                otpTimer={otpTimer}
+                onResendOtp={async () => await handleResendOtp()}
+                onCancel={() => {
+                  // Reset form
+                  resetForm();
+                  setFormVal(null);
+                  setShowOtpInput(false);
+                  setOtpTimer(otpDefaultTimer);
+                }}
+              />
             </>
           ) : (
             <>

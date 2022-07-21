@@ -39,9 +39,9 @@ function CmsSidebar() {
   // HANDLE ROLE LINKS
   const handleRoleLinks = () => {
     // If no args, return
-    //if (!userRole) return [];
+    if (!userRole) return [];
     // Switch user role
-    switch ("user") {
+    switch (userRole) {
       case "admin":
         return adminNavLinks;
       default:
@@ -185,7 +185,11 @@ function CmsSidebar() {
         <CustomDivider />
 
         {/** Settings */}
-        <li id="normalCmsNavLink" className="relative mb-24">
+        <li
+          id="normalCmsNavLink"
+          className="relative mb-24"
+          onClick={handleCloseSidebar}
+        >
           <CustomButton isLink href="/cms/settings">
             <a
               className={`${

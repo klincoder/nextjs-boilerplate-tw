@@ -16,21 +16,24 @@ import tw from "../styles/twStyles";
 import CustomImage from "./CustomImage";
 import CustomButton from "./CustomButton";
 import CmsSidebar from "./CmsSidebar";
-import { cmsMenuAtom } from "../recoil/atoms";
 import CustomDivider from "./CustomDivider";
 import CustomLogout from "./CustomLogout";
+import useAppSettings from "../hooks/useAppSettings";
+import { cmsMenuAtom } from "../recoil/atoms";
 
 // Component
 function PageHeaderCms() {
-  // Define state
-  // const [toggleMenu, setToggleMenu] = useState(false);
+  // Define atom
   const [toggleMenu, setToggleMenu] = useRecoilState(cmsMenuAtom);
 
   // Define router
   const router = useRouter();
 
+  // Define app settings
+  const { userAvatar } = useAppSettings();
+
   // Debug
-  //console.log("Debug pageHeaderCms: ", router.pathname);
+  //console.log("Debug cmsHeader: ", userAvatar);
 
   // FUNCTIONS
   // HANDLE TOGGLE MENU
@@ -111,7 +114,7 @@ function PageHeaderCms() {
               className="dropdown-toggle flex items-center hidden-arrow"
             >
               <CustomImage
-                image={appImages?.avatar}
+                image={userAvatar || appImages?.avatar}
                 imgClass="rounded-full"
                 alt="avatar"
                 width={25}
@@ -142,9 +145,6 @@ function PageHeaderCms() {
               {/** Logput */}
               <li>
                 <CustomLogout />
-                {/* <a className="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100">
-                  Logout
-                </a> */}
               </li>
             </ul>
           </div>

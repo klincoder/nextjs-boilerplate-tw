@@ -41,8 +41,7 @@ function CustomOtpInputForm({ name, type, onSubmitCode, isLoading, ...rest }) {
       {/** Button */}
       <CustomButton
         isNormal
-        type="submit"
-        className="w-full mt-3"
+        type={type || "button"}
         onClick={onSubmitCode}
         disabled={!isValid || isSubmitting || isLoading}
       >

@@ -11,7 +11,7 @@ import tw from "../styles/twStyles";
 import logo from "../assets/images/logo.svg";
 import logoDefault from "../assets/logo.png";
 import logoWhite from "../assets/images/logo-white.svg";
-import avatar from "../assets/logo.png";
+import avatar from "../assets/avatar-default.png";
 import hero from "../assets/images/illustration-intro.svg";
 import testimonials1 from "../assets/images/avatar-anisha.png";
 import testimonials2 from "../assets/images/avatar-richard.png";
@@ -44,7 +44,7 @@ export const intl = new Intl.NumberFormat();
 export const fileExtensions = ["jpg", "jpeg", "gif", "png"];
 
 // OTP DEFAULT TIMER
-export const otpDefaultTimer = 89;
+export const otpDefaultTimer = 59;
 
 // APP COLORS
 export const appColors = {
@@ -114,9 +114,13 @@ export const alertMsg = {
   otpSendSucc: "We sent your OTP code. Check your inbox or spam.",
   otpSendErr: "Failed to send OTP. Try again.",
   otpVerifyErr: "Invalid code",
-  emailExistErr: "Email address already exist",
-  unernameExistErr: "Username is not available",
+  emailExistSucc: "Email address already exist",
+  emailExistErr: "Invalid email address",
+  usernameExistSucc: "Username already exist",
+  usernameExistErr: "Invalid username",
   isRequiredAll: "All fields are required",
+  passRecoverySucc: "Password recovery successful",
+  passRecoveryErr: "Failed to recover password",
 };
 
 // NAV LINKS

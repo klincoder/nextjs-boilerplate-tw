@@ -7,10 +7,10 @@ import { useAlert } from "react-alert";
 import CustomButton from "./CustomButton";
 import CustomSpinner from "./CustomSpinner";
 import CustomTextInputForm from "./CustomTextInputForm";
+import CustomPasswordForm from "./CustomPasswordForm";
+import useAppSettings from "../hooks/useAppSettings";
 import { alertMsg, apiRoutes } from "../config/data";
 import { handleIsEmptyForm, handleUserEmail } from "../config/functions";
-
-import useAppSettings from "../hooks/useAppSettings";
 
 // Component
 function FormPasswordRecoveryDetails({
@@ -21,8 +21,7 @@ function FormPasswordRecoveryDetails({
   setShowOtpInput,
 }) {
   // Define formik context
-  const { values, isSubmitting, isValid, setSubmitting, handleSubmit } =
-    useFormikContext();
+  const { values, isSubmitting, isValid, handleSubmit } = useFormikContext();
 
   // Define alert
   const alert = useAlert();
@@ -42,7 +41,7 @@ function FormPasswordRecoveryDetails({
   const [loading, setLoading] = useState(false);
 
   // Debug
-  //console.log("Debug formPassRecDetails: ", otpCode);
+  //console.log("Debug formPassRecDetails: ", showNewPass);
 
   // FUNCTIONS
   // HANDLE SEND OTP EMAIL
@@ -53,6 +52,8 @@ function FormPasswordRecoveryDetails({
     const finalEmail = values.emailAddr?.trim()?.toLowerCase();
     const emailExist = handleEmailExist(finalEmail);
     const userInfo = emailExist?.data;
+    // Debug
+    //console.log("Debug handleSendOtpEmail: ", { finalEmail, emailExist });
     // If isEmptyForm
     if (finalEmail === "") {
       // Alert err
@@ -88,23 +89,15 @@ function FormPasswordRecoveryDetails({
   // Return component
   return (
     <>
-      {/** Email address */}
-      <CustomTextInputForm
-        type="email"
-        name="emailAddr"
-        label="Email Address"
-        helperText="We'll send a verification code"
-      />
-
       {/** If showNewPass */}
-      {showNewPass && (
+      {showNewPass ? (
         <>
           {/** New password */}
           <CustomPasswordForm
             name="newPass"
             label="New Password"
             showPass={showPass}
-            onClickShowPass={() => setShowPass(!showPass)}
+            onShowPass={() => setShowPass(!showPass)}
           />
 
           {/** Repeat new password */}
@@ -112,40 +105,51 @@ function FormPasswordRecoveryDetails({
             name="repeatNewPass"
             label="Password"
             showPass={showPass}
-            onClickShowPass={() => setShowPass(!showPass)}
+            onShowPass={() => setShowPass(!showPass)}
           />
+
+          {/** Button - Submit form */}
+          <CustomButton
+            isNormal
+            type="submit"
+            onClick={handleSubmit}
+            disabled={!isValid || isSubmitting}
+          >
+            Submit
+            {isSubmitting && <CustomSpinner />}
+          </CustomButton>
+        </>
+      ) : (
+        <>
+          {/** Email address */}
+          <CustomTextInputForm
+            type="email"
+            name="emailAddr"
+            label="Email Address"
+            helperText="We'll send a verification code"
+          />
+
+          {/** Button - Validate & send otp code */}
+          <CustomButton
+            isNormal
+            onClick={async () => await handleSendOtpEmail()}
+            disabled={!isValid || !finalEmail || loading}
+          >
+            Continue
+            {loading && <CustomSpinner />}
+          </CustomButton>
+
+          {/** OTHER LINKS */}
+          {/** Login link */}
+          <div className="text-center mt-3">
+            <CustomButton isLink href="/login">
+              <a className="text-base text-black underline">
+                Have an account? Login
+              </a>
+            </CustomButton>
+          </div>
         </>
       )}
-
-      {/** Button - Validate & send otp code */}
-      <CustomButton
-        isNormal
-        disabled={!isValid || isSubmitting || loading || !finalEmail}
-        onClick={async () => {
-          // If showNewPass
-          if (showNewPass) {
-            // Submit form
-            handleSubmit();
-          } else {
-            // Send otp
-            await handleSendOtpEmail();
-          } // close if showNewPass
-        }}
-      >
-        {/** Button text */}
-        {showNewPass ? "Submit" : "Continue"}
-        {(isSubmitting || loading) && <CustomSpinner />}
-      </CustomButton>
-
-      {/** OTHER LINKS */}
-      {/** Login link */}
-      <div className="text-center mt-3">
-        <CustomButton isLink href="/login">
-          <a className="text-base text-black underline">
-            Have an account? Login
-          </a>
-        </CustomButton>
-      </div>
     </>
   ); // close return
 } // close component

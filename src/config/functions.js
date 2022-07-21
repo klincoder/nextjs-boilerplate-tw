@@ -21,7 +21,7 @@ export const handleUserEmail = async (toName, toEmail, msg, api, fromEmail) => {
         msg: msg,
         fromName: "Bulkahia",
         fromEmail: fromEmail || "noreply@bulkahia.com",
-        footerName: "Bulkahia Team",
+        footerName: "Klincoder",
       },
     },
   })
@@ -51,7 +51,7 @@ export const handleAdminEmail = async (msg, api, fromEmail) => {
         msg: msg,
         fromName: "Bulkahia",
         fromEmail: fromEmail || "noreply@bulkahia.com",
-        footerName: "Bulkahia Team",
+        footerName: "Klincoder",
       },
     },
   })

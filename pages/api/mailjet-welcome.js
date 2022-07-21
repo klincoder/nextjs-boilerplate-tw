@@ -37,12 +37,10 @@ export default async function handler(req, res) {
               <div style="font-size: 14px;">
               <h3>Hi, ${reqToName}</h3>
               <p>I want to personally welcome you to Bulkahia.</p>
-              <p>Our mission is to provide the best way for brands & freelancers to reach more customers and make money with status views.</p>
-              <p>Remember to <a href="https://bit.ly/bulkahians" style="font-weight: 600">join our Telegram community (Bulkahians)</a> for latest updates & faster support.</p>
+              <p>Our mission is to provide the best services for your business.</p>
               <br />
               <div>Best regards,</div>
-              <div>Chinaemerem Obodoefula.</div>
-              <div>Founder, Bulkahia</div>
+              <div>Klincoder</div>
               </div>
             `,
           },
