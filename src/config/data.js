@@ -69,7 +69,7 @@ export const appImages = {
   logoWhite,
   hero,
   avatar,
-  general: "https://via.placeholder.com/640x400.png",
+  general: "https://placehold.co/600x400?text=Image",
   testimonials1,
   testimonials2,
   testimonials3,

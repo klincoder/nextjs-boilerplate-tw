@@ -1,10 +1,12 @@
 // Import resources
 import React from "react";
+import { AiOutlineWarning } from "react-icons/ai";
 
 // Import custom files
 import tw from "../src/styles/twStyles";
-import PageContent from "../src/components/PageContent";
 import { appImages } from "../src/config/data";
+import PageContent from "../src/components/PageContent";
+import CustomButton from "../src/components/CustomButton";
 
 // Component
 function ErrorPage() {
@@ -13,20 +15,21 @@ function ErrorPage() {
 
   // Return component
   return (
-    <PageContent title="Page Not Found">
+    <PageContent title="Not Found">
       {/** SECTION - PAGE DETAILS */}
       <section id="errorPage" className="bg-white">
         {/** CONTAINER */}
-        <div className="container flex mx-auto px-4 py-24 md:flex-row md:space-y-0">
-          {/** COL 1 */}
-          <div className="flex flex-col mb-32 space-y-8 md:w-1/2">
-            <p>Col 1</p>
-          </div>
+        <div className="container flex flex-col items-center mx-auto px-4 pt-14 py-40">
+          {/** Icon */}
+          <AiOutlineWarning size={100} className="text-lightPrimary mb-3" />
 
-          {/** COL 2 */}
-          <div className="flex flex-col mb-32 space-y-8 md:w-1/2">
-            <p>Col 2</p>
-          </div>
+          {/** Title */}
+          <div className="text-3xl mb-2">Page not found</div>
+
+          {/** Button */}
+          <CustomButton isLink href="/">
+            <a className={tw?.btnSecondary}>Back to home</a>
+          </CustomButton>
         </div>
       </section>
     </PageContent>

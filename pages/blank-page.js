@@ -3,8 +3,8 @@ import React from "react";
 
 // Import custom files
 import tw from "../src/styles/twStyles";
-import PageContent from "../src/components/PageContent";
 import { appImages } from "../src/config/data";
+import PageContent from "../src/components/PageContent";
 
 // Component
 function BlankPage() {
